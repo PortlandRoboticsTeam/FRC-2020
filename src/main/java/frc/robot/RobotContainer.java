@@ -14,8 +14,7 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.SlideDrive;
+import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 
 /**
@@ -37,11 +36,12 @@ public class RobotContainer
 
     private final ExampleCommand autonomousCommand = new ExampleCommand(exampleSubsystem);
     private final SlideDrive slideDrive = new SlideDrive(drivetrain);
+    private final ArcadeDrive arcadeDrive = new ArcadeDrive(drivetrain);
+    private final TankDrive tankDrive = new TankDrive(drivetrain);
+    private final CurvatureDrive curvatureDrive = new CurvatureDrive(drivetrain);
 
     public static Joystick m_stick = new Joystick(0);
     public static Joystick s_stick = new Joystick(1);
-
-
 
     SendableChooser<Command> autoChooser = new SendableChooser<>();
     SendableChooser<Command> driveChooser = new SendableChooser<>();
@@ -54,15 +54,16 @@ public class RobotContainer
         // Configure the button bindings
         configureButtonBindings();
 
+        //Add options to the choosers
         autoChooser.addOption("Autonomous 1", autonomousCommand);
         autoChooser.addOption("Autonomous 2", autonomousCommand);
 
         driveChooser.addOption("Slide Drive", slideDrive);
-        driveChooser.addOption("Tank Drive", slideDrive);
-        driveChooser.addOption("Curvature Drive", slideDrive);
-        driveChooser.addOption("Arcade Drive", slideDrive);
+        driveChooser.addOption("Tank Drive", tankDrive);
+        driveChooser.addOption("Curvature Drive", curvatureDrive);
+        driveChooser.addOption("Arcade Drive", arcadeDrive);
 
-        // Put the chooser on the dashboard
+        // Put the choosers on the dashboard
         Shuffleboard.getTab("Autonomous").add(autoChooser);
         Shuffleboard.getTab("Drive Mode").add(driveChooser);
 
@@ -77,8 +78,6 @@ public class RobotContainer
      */
     private void configureButtonBindings()
     {
-
-
         JoystickButton mainTrigger = new JoystickButton(m_stick, 1);
         mainTrigger.whenPressed(autonomousCommand);
 

@@ -3,13 +3,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
-import static frc.robot.RobotContainer.*;
+import static frc.robot.RobotContainer.m_stick;
+import static frc.robot.RobotContainer.s_stick;
 
 
-public class SlideDrive extends CommandBase {
+public class TankDrive extends CommandBase {
     private final Drivetrain drivetrain;
 
-    public SlideDrive(Drivetrain drivetrain) {
+    public TankDrive(Drivetrain drivetrain) {
         this.drivetrain = drivetrain;
         addRequirements(drivetrain);
     }
@@ -21,7 +22,7 @@ public class SlideDrive extends CommandBase {
 
     @Override
     public void execute() {
-        drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), 0.8);
+        drivetrain.tankDrive(m_stick.getY(), s_stick.getY(), 0.8);
     }
 
     @Override
