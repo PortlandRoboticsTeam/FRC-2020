@@ -17,5 +17,9 @@ package frc.robot;
  */
 public final class Constants 
 {
-    
+    //Example constant definition
+    public static final int teamNumber = 7195;
+
+
+
 }
