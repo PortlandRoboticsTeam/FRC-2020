@@ -1,7 +1,10 @@
 package frc.robot.subsystems;
 
 
+import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import static frc.robot.Constants.*;
 
 public class Intake extends SubsystemBase {
 
@@ -14,16 +17,21 @@ public class Intake extends SubsystemBase {
      */
     private final static Intake INSTANCE = new Intake();
 
+    private final PWMTalonSRX intakeRight = new PWMTalonSRX(intakePortNum);
+    private final PWMTalonSRX intakeLeft = new PWMTalonSRX(intakePortNum);
+
     /**
      * Creates a new instance of this Intake.
      * This constructor is private since this class is a Singleton. External classes
      * should use the {@link #getInstance()} method to get the instance.
      */
     public Intake() {
-        // TODO: Set the default command, if any, for this subsystem by calling setDefaultCommand(command)
-        //       in the constructor or in the robot coordination class, such as RobotContainer.
-        //       Also, you can call addChild(name, sendableChild) to associate sendables with the subsystem
-        //       such as SpeedControllers, Encoders, DigitalInputs, etc.
+
+    }
+
+    public void succ(double speed) {
+        intakeRight.set(-speed);
+        intakeLeft.set(speed);
     }
 
     /**

@@ -1,7 +1,10 @@
 package frc.robot.subsystems;
 
 
+import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+
+import static frc.robot.Constants.*;
 
 public class Shooter extends SubsystemBase {
 
@@ -14,16 +17,21 @@ public class Shooter extends SubsystemBase {
      */
     private final static Shooter INSTANCE = new Shooter();
 
+    private final PWMTalonSRX shooterRight = new PWMTalonSRX(shooterPortNum);
+    private final PWMTalonSRX shooterLeft = new PWMTalonSRX(shooterPortNum);
+
     /**
      * Creates a new instance of this Shooter.
      * This constructor is private since this class is a Singleton. External classes
      * should use the {@link #getInstance()} method to get the instance.
      */
     public Shooter() {
-        // TODO: Set the default command, if any, for this subsystem by calling setDefaultCommand(command)
-        //       in the constructor or in the robot coordination class, such as RobotContainer.
-        //       Also, you can call addChild(name, sendableChild) to associate sendables with the subsystem
-        //       such as SpeedControllers, Encoders, DigitalInputs, etc.
+
+    }
+
+    public void shoot(double speed) {
+        shooterRight.set(speed);
+        shooterLeft.set(-speed);
     }
 
     /**

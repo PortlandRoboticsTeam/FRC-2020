@@ -27,24 +27,26 @@ import static frc.robot.Constants.*;
  */
 public class RobotContainer
 {
-    // The robot's subsystems and commands are defined here
+    // Subsystem definitions
     private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-
     private final Drivetrain drivetrain = new Drivetrain();
     private final Elevator elevator = new Elevator();
     private final Intake intake = new Intake();
     private final Shooter shooter = new Shooter();
     private final WheelSpinner wheelSpinner = new WheelSpinner();
 
+    // Command definitions
     private final ExampleCommand autonomousCommand = new ExampleCommand(exampleSubsystem);
     private final SlideDrive slideDrive = new SlideDrive(drivetrain);
     private final ArcadeDrive arcadeDrive = new ArcadeDrive(drivetrain);
     private final TankDrive tankDrive = new TankDrive(drivetrain);
     private final CurvatureDrive curvatureDrive = new CurvatureDrive(drivetrain);
 
+    //Joystick definitions
     public static Joystick m_stick = new Joystick(0);
     public static Joystick s_stick = new Joystick(1);
 
+    //Chooser definitions
     SendableChooser<Command> autoChooser = new SendableChooser<>();
     SendableChooser<Command> driveChooser = new SendableChooser<>();
 

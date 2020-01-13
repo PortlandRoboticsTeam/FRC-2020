@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.interfaces.Accelerometer;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import static frc.robot.Constants.*;
+
 public class Elevator extends SubsystemBase {
 
 // Any variables/fields used in the constructor must appear before the "INSTANCE" variable
@@ -18,8 +20,8 @@ public class Elevator extends SubsystemBase {
     private final static Elevator INSTANCE = new Elevator();
 
 
-    private final PWMTalonSRX liftMotor = new PWMTalonSRX(0);
-    private final PWMTalonSRX hookMotor = new PWMTalonSRX(1);
+    private final PWMTalonSRX liftMotor = new PWMTalonSRX(elevator1PortNum);
+    private final PWMTalonSRX hookMotor = new PWMTalonSRX(elevator2PortNum);
 
     private final Gyro gyro = new ADXRS450_Gyro(SPI.Port.kMXP);
     private final Accelerometer accelerometer = new BuiltInAccelerometer();

@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import static frc.robot.Constants.*;
+
 public class WheelSpinner extends SubsystemBase {
 
 // Any variables/fields used in the constructor must appear before the "INSTANCE" variable
@@ -17,7 +19,7 @@ public class WheelSpinner extends SubsystemBase {
     private final static WheelSpinner INSTANCE = new WheelSpinner();
 
 
-    private final PWMTalonSRX wheelMotor = new PWMTalonSRX(0);
+    private final PWMTalonSRX wheelMotor = new PWMTalonSRX(wheelSpinnerPortNum);
     private final Encoder colorWheelEncoder = new Encoder(1,2);
 
     /**

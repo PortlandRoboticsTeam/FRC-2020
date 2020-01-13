@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
+import static frc.robot.Constants.*;
+
 public class Drivetrain extends SubsystemBase {
 
 // Any variables/fields used in the constructor must appear before the "INSTANCE" variable
@@ -19,12 +21,12 @@ public class Drivetrain extends SubsystemBase {
     private final static Drivetrain INSTANCE = new Drivetrain();
 
 
-    private final Spark frontRight = new Spark(0);
-    private final Spark rearRight = new Spark(1);
-    private final Spark frontLeft = new Spark(2);
-    private final Spark rearLeft = new Spark(3);
+    private final Spark frontRight = new Spark(wheel1PortNum);
+    private final Spark rearRight = new Spark(wheel2PortNum);
+    private final Spark frontLeft = new Spark(wheel3PortNum);
+    private final Spark rearLeft = new Spark(wheel4PortNum);
 
-    private final PWMSparkMax center = new PWMSparkMax(5);
+    private final PWMSparkMax center = new PWMSparkMax(wheel5PortNum);
 
     private final SpeedControllerGroup rightSide = new SpeedControllerGroup(frontRight, rearRight);
     private final SpeedControllerGroup leftSide = new SpeedControllerGroup(frontLeft, rearLeft);
