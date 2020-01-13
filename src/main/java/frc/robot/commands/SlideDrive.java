@@ -21,12 +21,12 @@ public class SlideDrive extends CommandBase {
 
     @Override
     public void execute() {
-        drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), 0.8);
+        drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), m_stick.getRawButton(1),0.8);
     }
 
     @Override
     public boolean isFinished() {
-        return false;
+        return true;
     }
 
     @Override

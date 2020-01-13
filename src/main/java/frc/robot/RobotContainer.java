@@ -37,6 +37,8 @@ public class RobotContainer
 
     // Command definitions
     private final ExampleCommand autonomousCommand = new ExampleCommand(exampleSubsystem);
+    private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
+    private final ScoreAuto complexAutonomousCommand = new ScoreAuto(drivetrain);
     private final SlideDrive slideDrive = new SlideDrive(drivetrain);
     private final ArcadeDrive arcadeDrive = new ArcadeDrive(drivetrain);
     private final TankDrive tankDrive = new TankDrive(drivetrain);
@@ -59,8 +61,8 @@ public class RobotContainer
         configureButtonBindings();
 
         //Add options to the choosers
-        autoChooser.addOption("Autonomous 1", autonomousCommand);
-        autoChooser.addOption("Autonomous 2", autonomousCommand);
+        autoChooser.addOption("Autonomous Drive", simpleAutonomousCommand);
+        autoChooser.addOption("[Incomplete] Autonomous Score", complexAutonomousCommand);
 
         driveChooser.addOption("Slide Drive", slideDrive);
         driveChooser.addOption("Tank Drive", tankDrive);
@@ -82,8 +84,8 @@ public class RobotContainer
      */
     private void configureButtonBindings()
     {
-        JoystickButton mainTrigger = new JoystickButton(m_stick, 1);
-        mainTrigger.whenPressed(autonomousCommand);
+        JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
+        secondTrigger.whenPressed(autonomousCommand);
 
     }
 

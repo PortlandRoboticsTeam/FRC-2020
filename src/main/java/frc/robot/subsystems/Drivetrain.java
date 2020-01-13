@@ -43,7 +43,7 @@ public class Drivetrain extends SubsystemBase {
     }
 
     private double deadZone(double input) {
-        if (input >= 0.2 || input <= -0.2) {
+        if (Math.abs(input) > 0.2) {
             return input;
         } else {
             return 0;
@@ -58,7 +58,13 @@ public class Drivetrain extends SubsystemBase {
         center.stopMotor();
     }
 
-    public void slideDrive(double forward, double side, double twist, double scale) {
+    public void slideDrive(double forward, double side, double twist,  boolean button, double scale) {
+        if (button) {
+            forward *= 0.5;
+            side *= 0.5;
+            twist *= 0.5;
+        }
+
         drive.arcadeDrive(forward*scale, twist*scale);
         center.set(deadZone(side*scale));
         drive.feedWatchdog();
