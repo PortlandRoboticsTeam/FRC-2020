@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.util.Color;
-import com.revrobotics.*;
+//import com.revrobotics.*;
 
 
 import static frc.robot.Constants.*;
@@ -26,7 +26,7 @@ public class WheelSpinner extends SubsystemBase {
 
     private final PWMTalonSRX wheelMotor = new PWMTalonSRX(wheelSpinnerPortNum);
     private final Encoder colorWheelEncoder = new Encoder(1,2);
-    private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
+    //private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
 
     /**
      * Creates a new instance of this WheelSpinner.
@@ -41,7 +41,7 @@ public class WheelSpinner extends SubsystemBase {
         //colorSensor.configureColorSensor();
         //colorSensor.configureProximitySensor();
     }
-
+    /*
     public void spinToColor(Color targetColor, int offset) {
         while (colorSensor.getColor() != targetColor) {
             wheelMotor.set(0.1);
@@ -56,7 +56,7 @@ public class WheelSpinner extends SubsystemBase {
     public ColorSensorV3.RawColor getRawColor() {
         return colorSensor.getRawColor();
     }
-
+    */
     public void spinRight() {
         //Spin clockwise?
         wheelMotor.set(0.5);

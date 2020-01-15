@@ -28,15 +28,13 @@ import static frc.robot.Constants.*;
 public class RobotContainer
 {
     // Subsystem definitions
-    private final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     private final Drivetrain drivetrain = new Drivetrain();
-    private final Elevator elevator = new Elevator();
-    private final Intake intake = new Intake();
-    private final Shooter shooter = new Shooter();
-    private final WheelSpinner wheelSpinner = new WheelSpinner();
+    //private final Elevator elevator = new Elevator();
+    //private final Intake intake = new Intake();
+    //private final Shooter shooter = new Shooter();
+    //private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     // Command definitions
-    private final ExampleCommand autonomousCommand = new ExampleCommand(exampleSubsystem);
     private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
     private final ScoreAuto complexAutonomousCommand = new ScoreAuto(drivetrain);
     private final SlideDrive slideDrive = new SlideDrive(drivetrain);
@@ -50,7 +48,6 @@ public class RobotContainer
 
     //Chooser definitions
     SendableChooser<Command> autoChooser = new SendableChooser<>();
-    SendableChooser<Command> driveChooser = new SendableChooser<>();
 
     /**
      * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -60,20 +57,15 @@ public class RobotContainer
         // Configure the button bindings
         configureButtonBindings();
 
-        //Add options to the choosers
+        //Add options the autonomous chooser
         autoChooser.addOption("Autonomous Drive", simpleAutonomousCommand);
         autoChooser.addOption("[Incomplete] Autonomous Score", complexAutonomousCommand);
 
-        driveChooser.addOption("Slide Drive", slideDrive);
-        driveChooser.addOption("Tank Drive", tankDrive);
-        driveChooser.addOption("Curvature Drive", curvatureDrive);
-        driveChooser.addOption("Arcade Drive", arcadeDrive);
-
-        // Put the choosers on the dashboard
+        // Put the chooser on the dashboard
         Shuffleboard.getTab("Autonomous").add(autoChooser);
-        Shuffleboard.getTab("Drive Mode").add(driveChooser);
 
-        drivetrain.setDefaultCommand(driveChooser.getSelected());
+        //Set driving mode
+        drivetrain.setDefaultCommand(tankDrive);
     }
 
     /**
@@ -84,8 +76,11 @@ public class RobotContainer
      */
     private void configureButtonBindings()
     {
-        JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
-        secondTrigger.whenPressed(autonomousCommand);
+        //Names buttons
+        //JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
+
+        //Binds buttons
+        //secondTrigger.whenPressed(simpleAutonomousCommand);
 
     }
 
@@ -97,7 +92,6 @@ public class RobotContainer
      */
     public Command getAutonomousCommand()
     {
-        // An ExampleCommand will run in autonomous
         //return autonomousCommand;
         return autoChooser.getSelected();
     }

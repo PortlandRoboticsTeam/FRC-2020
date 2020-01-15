@@ -14,24 +14,27 @@ public class Drivetrain extends SubsystemBase {
 // Any variables/fields used in the constructor must appear before the "INSTANCE" variable
 // so that they are initialized before the constructor is called.
 
+    /*
+    private final static Spark frontRight = new Spark(wheel1PortNum);
+    private final static Spark rearRight = new Spark(wheel2PortNum);
+    private final static Spark frontLeft = new Spark(wheel3PortNum);
+    private final static Spark rearLeft = new Spark(wheel4PortNum);
+
+    private final static PWMSparkMax center = new PWMSparkMax(wheel5PortNum);
+
+    private final static SpeedControllerGroup rightSide = new SpeedControllerGroup(frontRight, rearRight);
+    private final static SpeedControllerGroup leftSide = new SpeedControllerGroup(frontLeft, rearLeft);
+    */
+
+    //Differential drive for testing on test bot
+    private final static DifferentialDrive drive = new DifferentialDrive(new Spark(8), new Spark(9));
+
+
     /**
      * The Singleton instance of this Drivetrain. External classes should
      * use the {@link #getInstance()} method to get the instance.
      */
     private final static Drivetrain INSTANCE = new Drivetrain();
-
-
-    private final Spark frontRight = new Spark(wheel1PortNum);
-    private final Spark rearRight = new Spark(wheel2PortNum);
-    private final Spark frontLeft = new Spark(wheel3PortNum);
-    private final Spark rearLeft = new Spark(wheel4PortNum);
-
-    private final PWMSparkMax center = new PWMSparkMax(wheel5PortNum);
-
-    private final SpeedControllerGroup rightSide = new SpeedControllerGroup(frontRight, rearRight);
-    private final SpeedControllerGroup leftSide = new SpeedControllerGroup(frontLeft, rearLeft);
-
-    private final DifferentialDrive drive = new DifferentialDrive(leftSide, rightSide);
 
     /**
      * Creates a new instance of this Drivetrain.
@@ -51,11 +54,11 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void stop() {
-        frontLeft.stopMotor();
-        frontRight.stopMotor();
-        rearLeft.stopMotor();
-        rearRight.stopMotor();
-        center.stopMotor();
+        //frontLeft.stopMotor();
+        //frontRight.stopMotor();
+        //rearLeft.stopMotor();
+        //rearRight.stopMotor();
+        //center.stopMotor();
     }
 
     public void slideDrive(double forward, double side, double twist,  boolean button, double scale) {
@@ -66,7 +69,7 @@ public class Drivetrain extends SubsystemBase {
         }
 
         drive.arcadeDrive(forward*scale, twist*scale);
-        center.set(deadZone(side*scale));
+        //center.set(deadZone(side*scale));
         drive.feedWatchdog();
     }
 
