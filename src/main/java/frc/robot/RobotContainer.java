@@ -29,9 +29,9 @@ public class RobotContainer
 {
     // Subsystem definitions
     private final Drivetrain drivetrain = new Drivetrain();
-    //private final Elevator elevator = new Elevator();
-    //private final Intake intake = new Intake();
-    //private final Shooter shooter = new Shooter();
+    private final Elevator elevator = new Elevator();
+    private final Intake intake = new Intake();
+    private final Shooter shooter = new Shooter();
     private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     // Command definitions
@@ -41,6 +41,8 @@ public class RobotContainer
     private final ArcadeDrive arcadeDrive = new ArcadeDrive(drivetrain);
     private final TankDrive tankDrive = new TankDrive(drivetrain);
     private final CurvatureDrive curvatureDrive = new CurvatureDrive(drivetrain);
+
+    private final BarBalance barBalance = new BarBalance(elevator);
 
     //Joystick definitions
     public static Joystick m_stick = new Joystick(0);
@@ -77,10 +79,10 @@ public class RobotContainer
     private void configureButtonBindings()
     {
         //Names buttons
-        //JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
+        JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
 
         //Binds buttons
-        //secondTrigger.whenPressed(simpleAutonomousCommand);
+        secondTrigger.whenPressed(barBalance);
 
     }
 
