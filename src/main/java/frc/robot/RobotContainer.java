@@ -43,6 +43,10 @@ public class RobotContainer
     private final CurvatureDrive curvatureDrive = new CurvatureDrive(drivetrain);
 
     private final BarBalance barBalance = new BarBalance(elevator);
+    private final IntakeSucc intakeSucc = new IntakeSucc(intake);
+    private final Shoot shoot = new Shoot(shooter);
+    private final SpinWheel spinWheel = new SpinWheel(wheelSpinner);
+
 
     //Joystick definitions
     public static Joystick m_stick = new Joystick(0);
@@ -80,9 +84,21 @@ public class RobotContainer
     {
         //Names buttons
         JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
+        JoystickButton m_2 = new JoystickButton(m_stick, 2);
+        JoystickButton m_3 = new JoystickButton(m_stick, 3);
+        JoystickButton m_4 = new JoystickButton(m_stick, 4);
+        JoystickButton s_3 = new JoystickButton(s_stick, 3);
+        JoystickButton s_4 = new JoystickButton(s_stick, 4);
+
 
         //Binds buttons
-        secondTrigger.whenPressed(barBalance);
+        secondTrigger.whenPressed(shoot);
+        m_2.whileHeld(intakeSucc);
+        //s_3.whileHeld(elevator down);
+        //s_4.whileHeld(elevator up);
+        //s_5.whileHeld(spin one way);
+        //s_6.whileHeld(spin other way);
+
 
     }
 
