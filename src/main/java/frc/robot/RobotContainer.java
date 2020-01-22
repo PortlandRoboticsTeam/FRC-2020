@@ -29,10 +29,10 @@ public class RobotContainer
 {
     // Subsystem definitions
     private final Drivetrain drivetrain = new Drivetrain();
-    private final Elevator elevator = new Elevator();
-    private final Intake intake = new Intake();
-    private final Shooter shooter = new Shooter();
-    private final WheelSpinner wheelSpinner = new WheelSpinner();
+    //private final Elevator elevator = new Elevator();
+    //private final Intake intake = new Intake();
+    //private final Shooter shooter = new Shooter();
+    //private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     // Command definitions
     private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
@@ -42,10 +42,10 @@ public class RobotContainer
     private final TankDrive tankDrive = new TankDrive(drivetrain);
     private final CurvatureDrive curvatureDrive = new CurvatureDrive(drivetrain);
 
-    private final BarBalance barBalance = new BarBalance(elevator);
-    private final IntakeSucc intakeSucc = new IntakeSucc(intake);
-    private final Shoot shoot = new Shoot(shooter);
-    private final SpinWheel spinWheel = new SpinWheel(wheelSpinner);
+    //private final BarBalance barBalance = new BarBalance(elevator);
+    //private final IntakeSucc intakeSucc = new IntakeSucc(intake);
+    //private final Shoot shoot = new Shoot(shooter);
+    //private final SpinWheel spinWheel = new SpinWheel(wheelSpinner);
 
 
     //Joystick definitions
@@ -71,7 +71,7 @@ public class RobotContainer
         Shuffleboard.getTab("Autonomous").add(autoChooser);
 
         //Set driving mode
-        drivetrain.setDefaultCommand(tankDrive);
+        drivetrain.setDefaultCommand(slideDrive);
     }
 
     /**
@@ -92,11 +92,11 @@ public class RobotContainer
 
 
         //Binds buttons
-        secondTrigger.whenPressed(shoot);
-        m_2.whileHeld(intakeSucc);
+        //secondTrigger.whenPressed(shoot);
+        //m_2.whileHeld(intakeSucc);
         //s_3.whileHeld(elevator down);
         //s_4.whileHeld(elevator up);
-        //s_5.whileHeld(spin one way);
+        //s_5.whileHeld(spin color wheelone way);
         //s_6.whileHeld(spin other way);
 
 

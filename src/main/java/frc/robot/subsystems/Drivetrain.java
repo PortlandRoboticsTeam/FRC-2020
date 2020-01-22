@@ -52,16 +52,17 @@ public class Drivetrain extends SubsystemBase {
         center.stopMotor();
     }
 
-    public void slideDrive(double forward, double side, double twist, double throttle, boolean button, double scale) {
+    public void slideDrive(double forward, double side, double twist, /*double throttle, boolean button,*/ double scale) {
+        /*
         if (button) {
             double mod = ((-throttle+1)/2);
             forward *= mod;
             side *= mod;
             twist *= mod;
         }
-
+        */
         drive.arcadeDrive(forward*scale, twist*scale);
-        center.set(deadZone(side*scale));
+        center.set(deadZone(side)*scale);
         drive.feedWatchdog();
     }
 
