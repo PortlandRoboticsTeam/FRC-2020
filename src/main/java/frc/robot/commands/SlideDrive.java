@@ -21,7 +21,8 @@ public class SlideDrive extends CommandBase {
 
     @Override
     public void execute() {
-        drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), /*m_stick.getThrottle(), m_stick.getTrigger(),*/ 0.8);
+        //drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), /*m_stick.getThrottle(), m_stick.getTrigger(),*/ 0.8);
+        drivetrain.slideDriveSimple(m_stick.getY(), m_stick.getX(), m_stick.getTwist());
     }
 
     @Override

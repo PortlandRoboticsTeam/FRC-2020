@@ -14,14 +14,16 @@ public class Drivetrain extends SubsystemBase {
 // Any variables/fields used in the constructor must appear before the "INSTANCE" variable
 // so that they are initialized before the constructor is called.
 
+    private final static Spark rightFront = new Spark(wheel1PortNum);
+    private final static Spark rightRear = new Spark(wheel2PortNum);
+    private final static Spark leftFront = new Spark(wheel3PortNum);
+    private final static Spark leftRear = new Spark(wheel4PortNum);
+    private final static PWMSparkMax center = new PWMSparkMax(wheel5PortNum);
 
-    private final static Spark right = new Spark(wheel1PortNum);
-    private final static Spark left = new Spark(wheel2PortNum);
-
-    private final static PWMSparkMax center = new PWMSparkMax(wheel3PortNum);
+    private final static SpeedControllerGroup right = new SpeedControllerGroup(rightFront, rightRear);
+    private final static SpeedControllerGroup left = new SpeedControllerGroup(leftFront, leftRear);
 
     private final static DifferentialDrive drive = new DifferentialDrive(right, left);
-
 
     /**
      * The Singleton instance of this Drivetrain. External classes should
@@ -52,17 +54,23 @@ public class Drivetrain extends SubsystemBase {
         center.stopMotor();
     }
 
-    public void slideDrive(double forward, double side, double twist, /*double throttle, boolean button,*/ double scale) {
-        /*
+    public void slideDrive(double forward, double side, double twist, double throttle, boolean button, double scale) {
+
         if (button) {
             double mod = ((-throttle+1)/2);
             forward *= mod;
             side *= mod;
             twist *= mod;
         }
-        */
+
         drive.arcadeDrive(forward*scale, twist*scale);
         center.set(deadZone(side)*scale);
+        drive.feedWatchdog();
+    }
+
+    public void slideDriveSimple(double forward, double side, double twist) {
+        drive.arcadeDrive(forward, twist);
+        center.set(side);
         drive.feedWatchdog();
     }
 

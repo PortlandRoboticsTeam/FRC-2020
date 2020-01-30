@@ -20,15 +20,17 @@ public final class Constants
     //Example constant definition
     public static final int teamNumber = 7195;
 
-    //Motor port numberings
-    public static final int wheel1PortNum = 0;  //frontRight
-    public static final int wheel2PortNum = 1;  //rearRight
-    public static final int wheel3PortNum = 2;  //frontLeft
-    public static final int wheel4PortNum = 3;  //rearLeft
+    //CAN port numberings
+    public static final int wheel1PortNum = 0;  //front right
+    public static final int wheel2PortNum = 1;  //rear right
+    public static final int wheel3PortNum = 2;  //front left
+    public static final int wheel4PortNum = 3;  //rear left
     public static final int wheel5PortNum = 4;  //center
-    public static final int elevator1PortNum = 5;
-    public static final int elevator2PortNum = 6;
-    public static final int intakePortNum = 7;
-    public static final int shooterPortNum = 8;
-    public static final int wheelSpinnerPortNum = 9;
+
+    //PWM port numberings
+    public static final int elevator1PortNum = 0;
+    public static final int elevator2PortNum = 0;
+    public static final int intakePortNum = 0;
+    public static final int shooterPortNum = 0;
+    public static final int wheelSpinnerPortNum = 0;
 }

@@ -32,7 +32,7 @@ public class RobotContainer
     //private final Elevator elevator = new Elevator();
     //private final Intake intake = new Intake();
     //private final Shooter shooter = new Shooter();
-    //private final WheelSpinner wheelSpinner = new WheelSpinner();
+    private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     // Command definitions
     private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
