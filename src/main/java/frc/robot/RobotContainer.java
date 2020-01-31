@@ -32,12 +32,12 @@ public class RobotContainer
     //private final Elevator elevator = new Elevator();
     //private final Intake intake = new Intake();
     //private final Shooter shooter = new Shooter();
-    private final WheelSpinner wheelSpinner = new WheelSpinner();
+    //private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     // Command definitions
     private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
     private final ScoreAuto complexAutonomousCommand = new ScoreAuto(drivetrain);
-    private final SlideDrive slideDrive = new SlideDrive(drivetrain);
+    //private final SlideDrive slideDrive = new SlideDrive(drivetrain);
     private final ArcadeDrive arcadeDrive = new ArcadeDrive(drivetrain);
     private final TankDrive tankDrive = new TankDrive(drivetrain);
     private final CurvatureDrive curvatureDrive = new CurvatureDrive(drivetrain);
@@ -71,7 +71,11 @@ public class RobotContainer
         Shuffleboard.getTab("Autonomous").add(autoChooser);
 
         //Set driving mode
-        drivetrain.setDefaultCommand(slideDrive);
+        drivetrain.setDefaultCommand(
+                new SlideDrive(drivetrain,
+                        () -> m_stick.getY(),
+                        () -> m_stick.getX(),
+                        () -> m_stick.getTwist()));
     }
 
     /**

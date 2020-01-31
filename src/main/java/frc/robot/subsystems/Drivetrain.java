@@ -1,11 +1,9 @@
 package frc.robot.subsystems;
 
-
-import edu.wpi.first.wpilibj.PWMSparkMax;
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import static frc.robot.Constants.*;
 
@@ -14,14 +12,16 @@ public class Drivetrain extends SubsystemBase {
 // Any variables/fields used in the constructor must appear before the "INSTANCE" variable
 // so that they are initialized before the constructor is called.
 
-    private final static Spark rightFront = new Spark(wheel1PortNum);
-    private final static Spark rightRear = new Spark(wheel2PortNum);
-    private final static Spark leftFront = new Spark(wheel3PortNum);
-    private final static Spark leftRear = new Spark(wheel4PortNum);
-    private final static PWMSparkMax center = new PWMSparkMax(wheel5PortNum);
+    private final static WPI_VictorSPX rightFront = new WPI_VictorSPX(wheel1PortNum);
+    private final static WPI_VictorSPX rightRear = new WPI_VictorSPX(wheel2PortNum);
+    private final static WPI_VictorSPX leftFront = new WPI_VictorSPX(wheel3PortNum);
+    private final static WPI_VictorSPX leftRear = new WPI_VictorSPX(wheel4PortNum);
+    private final static WPI_VictorSPX centerOne = new WPI_VictorSPX(wheel5PortNum);
+    private final static WPI_VictorSPX centerTwo = new WPI_VictorSPX(wheel6PortNum);
 
     private final static SpeedControllerGroup right = new SpeedControllerGroup(rightFront, rightRear);
     private final static SpeedControllerGroup left = new SpeedControllerGroup(leftFront, leftRear);
+    private final static SpeedControllerGroup center = new SpeedControllerGroup(centerOne, centerTwo);
 
     private final static DifferentialDrive drive = new DifferentialDrive(right, left);
 
@@ -49,9 +49,12 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void stop() {
-        left.stopMotor();
-        right.stopMotor();
-        center.stopMotor();
+        leftFront.stopMotor();
+        leftRear.stopMotor();
+        rightFront.stopMotor();
+        rightRear.stopMotor();
+        centerOne.stopMotor();
+        centerTwo.stopMotor();
     }
 
     public void slideDrive(double forward, double side, double twist, double throttle, boolean button, double scale) {

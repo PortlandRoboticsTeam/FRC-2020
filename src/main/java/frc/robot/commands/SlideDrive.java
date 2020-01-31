@@ -5,13 +5,22 @@ import frc.robot.subsystems.Drivetrain;
 
 import static frc.robot.RobotContainer.*;
 
+import java.util.function.DoubleSupplier;
+
 
 public class SlideDrive extends CommandBase {
-    private final Drivetrain drivetrain;
+    private final Drivetrain drive;
+    private final DoubleSupplier forward;
+    private final DoubleSupplier side;
+    private final DoubleSupplier twist;
 
-    public SlideDrive(Drivetrain drivetrain) {
-        this.drivetrain = drivetrain;
-        addRequirements(drivetrain);
+
+    public SlideDrive(Drivetrain drivetrain, DoubleSupplier forwardInput, DoubleSupplier sideInput, DoubleSupplier twistInput) {
+        drive = drivetrain;
+        forward = forwardInput;
+        side = sideInput;
+        twist = twistInput;
+        addRequirements(drive);
     }
 
     @Override
@@ -22,16 +31,17 @@ public class SlideDrive extends CommandBase {
     @Override
     public void execute() {
         //drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), /*m_stick.getThrottle(), m_stick.getTrigger(),*/ 0.8);
-        drivetrain.slideDriveSimple(m_stick.getY(), m_stick.getX(), m_stick.getTwist());
+        //drivetrain.slideDriveSimple(m_stick.getY(), m_stick.getX(), m_stick.getTwist());
+        drive.slideDriveSimple(forward.getAsDouble(), side.getAsDouble(), twist.getAsDouble());
     }
 
     @Override
     public boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override
     public void end(boolean interrupted) {
-        drivetrain.stop();
+        drive.stop();
     }
 }
