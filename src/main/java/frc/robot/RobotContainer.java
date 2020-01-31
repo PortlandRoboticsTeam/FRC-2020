@@ -31,7 +31,7 @@ public class RobotContainer
     private final Drivetrain drivetrain = new Drivetrain();
     //private final Elevator elevator = new Elevator();
     //private final Intake intake = new Intake();
-    //private final Shooter shooter = new Shooter();
+    private final Shooter shooter = new Shooter();
     //private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     // Command definitions
@@ -44,7 +44,8 @@ public class RobotContainer
 
     //private final BarBalance barBalance = new BarBalance(elevator);
     //private final IntakeSucc intakeSucc = new IntakeSucc(intake);
-    //private final Shoot shoot = new Shoot(shooter);
+    private final Shoot shoot = new Shoot(shooter);
+    private final Succ succ = new Succ(shooter);
     //private final SpinWheel spinWheel = new SpinWheel(wheelSpinner);
 
 
@@ -87,16 +88,17 @@ public class RobotContainer
     private void configureButtonBindings()
     {
         //Names buttons
-        JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
-        JoystickButton m_2 = new JoystickButton(m_stick, 2);
+        //JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
+        //JoystickButton m_2 = new JoystickButton(m_stick, 2);
         JoystickButton m_3 = new JoystickButton(m_stick, 3);
         JoystickButton m_4 = new JoystickButton(m_stick, 4);
-        JoystickButton s_3 = new JoystickButton(s_stick, 3);
-        JoystickButton s_4 = new JoystickButton(s_stick, 4);
+        //JoystickButton s_3 = new JoystickButton(s_stick, 3);
+        //JoystickButton s_4 = new JoystickButton(s_stick, 4);
 
 
         //Binds buttons
-        //secondTrigger.whenPressed(shoot);
+        m_3.whenPressed(shoot);
+        m_4.whenPressed(succ);
         //m_2.whileHeld(intakeSucc);
         //s_3.whileHeld(elevator down);
         //s_4.whileHeld(elevator up);

@@ -1,15 +1,23 @@
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
+
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.WheelSpinner;
+import frc.robot.subsystems.Shooter;
 
 
-public class SpinWheel extends CommandBase {
-    private final WheelSpinner wheelSpinner;
+public class Succ extends CommandBase {
+    private final Shooter shooter;
 
-    public SpinWheel(WheelSpinner wheelSpinner) {
-        this.wheelSpinner = wheelSpinner;
-        addRequirements(wheelSpinner);
+    public Succ(Shooter shooter) {
+      this.shooter = shooter;
+      addRequirements(shooter);
     }
 
     /**
@@ -26,7 +34,7 @@ public class SpinWheel extends CommandBase {
      */
     @Override
     public void execute() {
-
+        shooter.succ(0.8);
     }
 
     /**
@@ -58,6 +66,6 @@ public class SpinWheel extends CommandBase {
      */
     @Override
     public void end(boolean interrupted) {
-
+        shooter.stop();
     }
 }

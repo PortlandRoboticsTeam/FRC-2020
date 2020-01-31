@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.geometry.Twist2d;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
@@ -41,7 +42,7 @@ public class Drivetrain extends SubsystemBase {
     }
 
     private double deadZone(double input) {
-        if (Math.abs(input) > 0.2) {
+        if (Math.abs(input) > 0.1) {
             return input;
         } else {
             return 0;
@@ -57,17 +58,21 @@ public class Drivetrain extends SubsystemBase {
         centerTwo.stopMotor();
     }
 
-    public void slideDrive(double forward, double side, double twist, double throttle, boolean button, double scale) {
-
+    public void slideDrive(double forward, double side, double twist, double scale) {
+        /*
         if (button) {
             double mod = ((-throttle+1)/2);
             forward *= mod;
             side *= mod;
             twist *= mod;
         }
+        */
+        forward = deadZone(forward) * scale;
+        side = deadZone(side) * scale;
+        twist = deadZone(twist) * scale;
 
-        drive.arcadeDrive(forward*scale, twist*scale);
-        center.set(deadZone(side)*scale);
+        drive.arcadeDrive(forward, twist);
+        center.set(side);
         drive.feedWatchdog();
     }
 
