@@ -30,7 +30,7 @@ public class SlideDrive extends CommandBase {
     public void execute() {
         //drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), /*m_stick.getThrottle(), m_stick.getTrigger(),*/ 0.8);
         //drivetrain.slideDriveSimple(m_stick.getY(), m_stick.getX(), m_stick.getTwist());
-        drive.slideDrive(forward.getAsDouble(), side.getAsDouble(), twist.getAsDouble(), 0.8);
+        drive.slideDriveSimple(forward.getAsDouble(), side.getAsDouble(), twist.getAsDouble(), 0.8);
     }
 
     @Override

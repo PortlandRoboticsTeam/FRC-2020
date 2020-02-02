@@ -34,4 +34,7 @@ public final class Constants
     public static final int intakePortNum = 0;
     public static final int shooterPortNum = 0;
     public static final int wheelSpinnerPortNum = 0;
+
+    public static final int mStickPort = 0;
+    public static final int sStickPort = 1;
 }

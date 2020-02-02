@@ -7,9 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -32,26 +30,20 @@ public class RobotContainer
     //private final Elevator elevator = new Elevator();
     //private final Intake intake = new Intake();
     private final Shooter shooter = new Shooter();
-    //private final WheelSpinner wheelSpinner = new WheelSpinner();
+    private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     // Command definitions
     private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
     private final ScoreAuto complexAutonomousCommand = new ScoreAuto(drivetrain);
-    //private final SlideDrive slideDrive = new SlideDrive(drivetrain);
-    private final ArcadeDrive arcadeDrive = new ArcadeDrive(drivetrain);
-    private final TankDrive tankDrive = new TankDrive(drivetrain);
-    private final CurvatureDrive curvatureDrive = new CurvatureDrive(drivetrain);
 
-    //private final BarBalance barBalance = new BarBalance(elevator);
-    //private final IntakeSucc intakeSucc = new IntakeSucc(intake);
     private final Shoot shoot = new Shoot(shooter);
     private final Succ succ = new Succ(shooter);
-    //private final SpinWheel spinWheel = new SpinWheel(wheelSpinner);
+    private final SpinWheel spinWheel = new SpinWheel(wheelSpinner);
 
 
     //Joystick definitions
-    public static Joystick m_stick = new Joystick(0);
-    public static Joystick s_stick = new Joystick(1);
+    public static Joystick m_stick = new Joystick(mStickPort);
+    public static Joystick s_stick = new Joystick(sStickPort);
 
     //Chooser definitions
     SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -79,44 +71,25 @@ public class RobotContainer
                         () -> m_stick.getTwist()));
     }
 
-    /**
-     * Use this method to define your button->command mappings.  Buttons can be created by
-     * instantiating a {@link GenericHID} or one of its subclasses ({@link
-     * edu.wpi.first.wpilibj.Joystick Joystick} or {@link XboxController}), and then passing it to a
-     * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton JoystickButton}.
-     */
+    //Defines command-button mappings
     private void configureButtonBindings()
     {
         //Names buttons
-        //JoystickButton secondTrigger = new JoystickButton(s_stick, 1);
-        //JoystickButton m_2 = new JoystickButton(m_stick, 2);
         JoystickButton m_3 = new JoystickButton(m_stick, 3);
         JoystickButton m_4 = new JoystickButton(m_stick, 4);
-        //JoystickButton s_3 = new JoystickButton(s_stick, 3);
-        //JoystickButton s_4 = new JoystickButton(s_stick, 4);
-
+        JoystickButton m_5 = new JoystickButton(m_stick, 5);
 
         //Binds buttons
         m_3.whenPressed(shoot);
         m_4.whenPressed(succ);
-        //m_2.whileHeld(intakeSucc);
-        //s_3.whileHeld(elevator down);
-        //s_4.whileHeld(elevator up);
-        //s_5.whileHeld(spin color wheelone way);
-        //s_6.whileHeld(spin other way);
-
+        m_5.whileHeld(spinWheel);
 
     }
 
 
-    /**
-     * Use this to pass the autonomous command to the main {@link Robot} class.
-     *
-     * @return the command to run in autonomous
-     */
+    //Return autonomus command to this function
     public Command getAutonomousCommand()
     {
-        //return autonomousCommand;
         return autoChooser.getSelected();
     }
 }

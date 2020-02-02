@@ -2,8 +2,6 @@ package frc.robot.subsystems;
 
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.interfaces.Accelerometer;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import static frc.robot.Constants.*;
@@ -19,12 +17,9 @@ public class Elevator extends SubsystemBase {
      */
     private final static Elevator INSTANCE = new Elevator();
 
-
     private final PWMTalonSRX liftMotor = new PWMTalonSRX(elevator1PortNum);
     private final PWMTalonSRX hookMotor = new PWMTalonSRX(elevator2PortNum);
 
-    private final Gyro gyro = new ADXRS450_Gyro(SPI.Port.kMXP);
-    private final Accelerometer accelerometer = new BuiltInAccelerometer();
 
     /**
      * Creates a new instance of this Elevator.
