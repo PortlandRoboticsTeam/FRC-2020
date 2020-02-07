@@ -32,7 +32,7 @@ public class RobotContainer
     private final Shooter shooter = new Shooter();
     private final WheelSpinner wheelSpinner = new WheelSpinner();
 
-    // Command definitions
+    //Command definitions
     private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
     private final ScoreAuto complexAutonomousCommand = new ScoreAuto(drivetrain);
 
@@ -48,11 +48,9 @@ public class RobotContainer
     //Chooser definitions
     SendableChooser<Command> autoChooser = new SendableChooser<>();
 
-    /**
-     * The container for the robot.  Contains subsystems, OI devices, and commands.
-     */
-    public RobotContainer()
-    {
+    
+    //The container for the robot.  Contains subsystems, OI devices, and commands.
+    public RobotContainer() {
         // Configure the button bindings
         configureButtonBindings();
 
@@ -72,8 +70,7 @@ public class RobotContainer
     }
 
     //Defines command-button mappings
-    private void configureButtonBindings()
-    {
+    private void configureButtonBindings() {
         //Names buttons
         JoystickButton m_3 = new JoystickButton(m_stick, 3);
         JoystickButton m_4 = new JoystickButton(m_stick, 4);
@@ -86,10 +83,8 @@ public class RobotContainer
 
     }
 
-
     //Return autonomus command to this function
-    public Command getAutonomousCommand()
-    {
+    public Command getAutonomousCommand() {
         return autoChooser.getSelected();
     }
 }
