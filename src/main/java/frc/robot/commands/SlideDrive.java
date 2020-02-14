@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
+import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 
 
@@ -11,13 +12,17 @@ public class SlideDrive extends CommandBase {
     private final DoubleSupplier forward;
     private final DoubleSupplier side;
     private final DoubleSupplier twist;
+    private final DoubleSupplier throttle;
+    private final BooleanSupplier trigger;
 
 
-    public SlideDrive(Drivetrain drivetrain, DoubleSupplier forwardInput, DoubleSupplier sideInput, DoubleSupplier twistInput) {
+    public SlideDrive(Drivetrain drivetrain, DoubleSupplier forwardInput, DoubleSupplier sideInput, DoubleSupplier twistInput, DoubleSupplier throttleInput, BooleanSupplier triggerInput) {
         drive = drivetrain;
         forward = forwardInput;
         side = sideInput;
         twist = twistInput;
+        throttle = throttleInput;
+        trigger = triggerInput;
         addRequirements(drive);
     }
 
@@ -28,9 +33,9 @@ public class SlideDrive extends CommandBase {
 
     @Override
     public void execute() {
-        //drivetrain.slideDrive(m_stick.getY(), m_stick.getX(), m_stick.getTwist(), /*m_stick.getThrottle(), m_stick.getTrigger(),*/ 0.8);
+        drive.slideDrive(forward.getAsDouble(), side.getAsDouble(), twist.getAsDouble(), throttle.getAsDouble(), trigger.getAsBoolean(), 1);
         //drivetrain.slideDriveSimple(m_stick.getY(), m_stick.getX(), m_stick.getTwist());
-        drive.slideDriveSimple(forward.getAsDouble(), side.getAsDouble(), twist.getAsDouble(), 0.8);
+        //drive.slideDriveSimple(forward.getAsDouble(), side.getAsDouble(), twist.getAsDouble(), 0.5);
     }
 
     @Override

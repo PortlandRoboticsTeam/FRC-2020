@@ -66,7 +66,10 @@ public class RobotContainer
                 new SlideDrive(drivetrain,
                         () -> m_stick.getY(),
                         () -> m_stick.getX(),
-                        () -> m_stick.getTwist()));
+                        () -> m_stick.getTwist(),
+                        () -> m_stick.getThrottle(),
+                        () -> m_stick.getTrigger()));
+
     }
 
     //Defines command-button mappings

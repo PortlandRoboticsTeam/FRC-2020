@@ -17,8 +17,8 @@ public class Shooter extends SubsystemBase {
      */
     private final static Shooter INSTANCE = new Shooter();
 
-    private final Spark shooterTop = new Spark(shooterPortNum);
-    private final Spark shooterBottom = new Spark(shooterPortNum);
+    //private final Spark shooterTop = new Spark(shooterPortNum);
+    //private final Spark shooterBottom = new Spark(shooterPortNum);
 
     /**
      * Creates a new instance of this Shooter.
@@ -30,18 +30,18 @@ public class Shooter extends SubsystemBase {
     }
 
     public void shoot(double speed) {
-        shooterTop.set(speed);
-        shooterBottom.set(-speed);
+        //shooterTop.set(speed);
+        //shooterBottom.set(-speed);
     }
 
     public void succ(double speed) {
-        shooterTop.set(-speed);
-        shooterBottom.set(speed);
+        //shooterTop.set(-speed);
+        //shooterBottom.set(speed);
     }
 
     public void stop() {
-        shooterTop.stopMotor();
-        shooterBottom.stopMotor();
+        //shooterTop.stopMotor();
+        //shooterBottom.stopMotor();
     }
 
     /**

@@ -21,11 +21,11 @@ public class WheelSpinner extends SubsystemBase {
 // Any variables/fields used in the constructor must appear before the "INSTANCE" variable
 // so that they are initialized before the constructor is called.
 
-    private final I2C.Port i2cPort = I2C.Port.kOnboard;
+    private final static I2C.Port i2cPort = I2C.Port.kOnboard;
 
-    private final PWMTalonSRX wheelMotor = new PWMTalonSRX(wheelSpinnerPortNum);
+    //private final PWMTalonSRX wheelMotor = new PWMTalonSRX(wheelSpinnerPortNum);
     //private final Encoder colorWheelEncoder = new Encoder(1,2);
-    private final ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
+    private final static ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
 
     private final static WheelSpinner INSTANCE = new WheelSpinner();
 
@@ -45,9 +45,9 @@ public class WheelSpinner extends SubsystemBase {
     
     public void spinToColor(Color targetColor, int offset) {
         while (colorSensor.getColor() != targetColor) {
-            wheelMotor.set(0.1);
+            //wheelMotor.set(0.1);
         }
-        wheelMotor.stopMotor();
+        //wheelMotor.stopMotor();
     }
 
     public Color getColor() {
@@ -60,15 +60,15 @@ public class WheelSpinner extends SubsystemBase {
     
     public void spinRight() {
         //Spin clockwise?
-        wheelMotor.set(0.5);
+        //wheelMotor.set(0.5);
     }
 
     public void spinLeft() {
         //Spin counterclockwise?
-        wheelMotor.set(-0.5);
+        //wheelMotor.set(-0.5);
     }
     
-    public void pushToDashboard() {
+    public static void pushToDashboard() {
         SmartDashboard.putNumber("Red", colorSensor.getColor().red);
         SmartDashboard.putNumber("Green", colorSensor.getColor().green);
         SmartDashboard.putNumber("Blue", colorSensor.getColor().blue);
@@ -76,7 +76,7 @@ public class WheelSpinner extends SubsystemBase {
     }
 
     public void stop() {
-        wheelMotor.stopMotor();
+        //wheelMotor.stopMotor();
     }
     
 

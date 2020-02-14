@@ -26,7 +26,6 @@ public class SpinWheel extends CommandBase {
      */
     @Override
     public void execute() {
-        wheelSpinner.pushToDashboard();
         wheelSpinner.spinRight();
     }
 
