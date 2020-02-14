@@ -6,10 +6,10 @@ import frc.robot.subsystems.Drivetrain;
 import static frc.robot.RobotContainer.m_stick;
 
 
-public class CurvatureDrive extends CommandBase {
+public class DriveCurvature extends CommandBase {
     private final Drivetrain drivetrain;
 
-    public CurvatureDrive(Drivetrain drivetrain) {
+    public DriveCurvature(Drivetrain drivetrain) {
         this.drivetrain = drivetrain;
         addRequirements(drivetrain);
     }

@@ -7,10 +7,10 @@ import static frc.robot.RobotContainer.m_stick;
 import static frc.robot.RobotContainer.s_stick;
 
 
-public class TankDrive extends CommandBase {
+public class DriveTank extends CommandBase {
     private final Drivetrain drivetrain;
 
-    public TankDrive(Drivetrain drivetrain) {
+    public DriveTank(Drivetrain drivetrain) {
         this.drivetrain = drivetrain;
         addRequirements(drivetrain);
     }

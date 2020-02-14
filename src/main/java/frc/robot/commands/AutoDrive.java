@@ -5,12 +5,12 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
 
-public class SimpleDriveAuto extends CommandBase {
+public class AutoDrive extends CommandBase {
     private final Drivetrain drivetrain;
 
     private final Timer autoTimer= new Timer();
 
-    public SimpleDriveAuto(Drivetrain drivetrain) {
+    public AutoDrive(Drivetrain drivetrain) {
         this.drivetrain = drivetrain;
         addRequirements(drivetrain);
     }
@@ -33,20 +33,7 @@ public class SimpleDriveAuto extends CommandBase {
 
     }
 
-    /**
-     * <p>
-     * Returns whether this command has finished. Once a command finishes -- indicated by
-     * this method returning true -- the scheduler will call its {@link #end(boolean)} method.
-     * </p><p>
-     * Returning false will result in the command never ending automatically. It may still be
-     * cancelled manually or interrupted by another command. Hard coding this command to always
-     * return true will result in the command executing once and finishing immediately. It is
-     * recommended to use * {@link edu.wpi.first.wpilibj2.command.InstantCommand InstantCommand}
-     * for such an operation.
-     * </p>
-     *
-     * @return whether this command has finished.
-     */
+
     @Override
     public boolean isFinished() {
         return (autoTimer.get() >= 5);

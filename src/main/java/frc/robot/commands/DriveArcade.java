@@ -6,10 +6,10 @@ import frc.robot.subsystems.Drivetrain;
 import static frc.robot.RobotContainer.m_stick;
 
 
-public class ArcadeDrive extends CommandBase {
+public class DriveArcade extends CommandBase {
     private final Drivetrain drivetrain;
 
-    public ArcadeDrive(Drivetrain drivetrain) {
+    public DriveArcade(Drivetrain drivetrain) {
         this.drivetrain = drivetrain;
         addRequirements(drivetrain);
     }

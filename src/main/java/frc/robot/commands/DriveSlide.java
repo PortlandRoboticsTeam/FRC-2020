@@ -7,7 +7,7 @@ import java.util.function.BooleanSupplier;
 import java.util.function.DoubleSupplier;
 
 
-public class SlideDrive extends CommandBase {
+public class DriveSlide extends CommandBase {
     private final Drivetrain drive;
     private final DoubleSupplier forward;
     private final DoubleSupplier side;
@@ -16,7 +16,7 @@ public class SlideDrive extends CommandBase {
     private final BooleanSupplier trigger;
 
 
-    public SlideDrive(Drivetrain drivetrain, DoubleSupplier forwardInput, DoubleSupplier sideInput, DoubleSupplier twistInput, DoubleSupplier throttleInput, BooleanSupplier triggerInput) {
+    public DriveSlide(Drivetrain drivetrain, DoubleSupplier forwardInput, DoubleSupplier sideInput, DoubleSupplier twistInput, DoubleSupplier throttleInput, BooleanSupplier triggerInput) {
         drive = drivetrain;
         forward = forwardInput;
         side = sideInput;

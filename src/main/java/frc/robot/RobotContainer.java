@@ -33,8 +33,8 @@ public class RobotContainer
     private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     //Command definitions
-    private final SimpleDriveAuto simpleAutonomousCommand = new SimpleDriveAuto(drivetrain);
-    private final ScoreAuto complexAutonomousCommand = new ScoreAuto(drivetrain);
+    private final AutoDrive simpleAutonomousCommand = new AutoDrive(drivetrain);
+    private final AutoScoreSimple complexAutonomousCommand = new AutoScoreSimple(drivetrain);
 
     private final Shoot shoot = new Shoot(shooter);
     private final Succ succ = new Succ(shooter);
@@ -63,7 +63,7 @@ public class RobotContainer
 
         //Set driving mode
         drivetrain.setDefaultCommand(
-                new SlideDrive(drivetrain,
+                new DriveSlide(drivetrain,
                         () -> m_stick.getY(),
                         () -> m_stick.getX(),
                         () -> m_stick.getTwist(),
