@@ -30,7 +30,7 @@ public class AutoDrive extends CommandBase {
      */
     @Override
     public void execute() {
-
+        drivetrain.tankDrive(-0.55, -0.5, 1);
     }
 
 
