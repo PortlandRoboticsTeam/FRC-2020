@@ -16,7 +16,7 @@ public class ShootOne extends CommandBase {
     private final Shooter shooter;
     private final Double speed;
 
-    private final Timer shootTimer= new Timer();
+    private final Timer shootTimer = new Timer();
 
     public ShootOne(Shooter shooter, Double speedInput) {
         this.shooter = shooter;

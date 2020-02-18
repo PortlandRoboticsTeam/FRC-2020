@@ -114,7 +114,7 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic()
     {
-        WheelSpinner.pushToDashboard();
+        WheelSpinner.pushRawToDashboard();
         SmartDashboard.putData("Accelerometer", acceleromenter);
     }
 
@@ -131,6 +131,6 @@ public class Robot extends TimedRobot
     @Override
     public void testPeriodic()
     {
-        WheelSpinner.pushToDashboard();
+        WheelSpinner.pushRawToDashboard();
     }
 }
