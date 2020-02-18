@@ -36,7 +36,7 @@ public class RobotContainer
     private final AutoDrive simpleAutonomousCommand = new AutoDrive(drivetrain);
     private final AutoScoreSimple complexAutonomousCommand = new AutoScoreSimple(drivetrain);
 
-    private final Shoot shoot = new Shoot(shooter);
+    private final Shoot shoot = new Shoot(shooter, 0.8);
     private final Succ succ = new Succ(shooter);
     private final SpinWheel spinWheel = new SpinWheel(wheelSpinner);
 

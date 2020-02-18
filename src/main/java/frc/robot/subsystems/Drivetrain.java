@@ -25,17 +25,9 @@ public class Drivetrain extends SubsystemBase {
 
     private final static DifferentialDrive drive = new DifferentialDrive(right, left);
 
-    /**
-     * The Singleton instance of this Drivetrain. External classes should
-     * use the {@link #getInstance()} method to get the instance.
-     */
+
     private final static Drivetrain INSTANCE = new Drivetrain();
 
-    /**
-     * Creates a new instance of this Drivetrain.
-     * This constructor is private since this class is a Singleton. External classes
-     * should use the {@link #getInstance()} method to get the instance.
-     */
     public Drivetrain() {
 
     }
@@ -83,6 +75,7 @@ public class Drivetrain extends SubsystemBase {
 
     public void tankDrive(double right, double left, double scale) {
         drive.tankDrive(left*scale, right*scale);
+        drive.feedWatchdog();
     }
 
     public void arcadeDrive(double forward, double rotation, double scale) {
@@ -94,11 +87,6 @@ public class Drivetrain extends SubsystemBase {
     }
 
 
-    /**
-     * Returns the Singleton instance of this Drivetrain. This static method
-     * should be used -- {@code Drivetrain.getInstance();} -- by external
-     * classes, rather than the constructor to get the instance of this class.
-     */
     public static Drivetrain getInstance() {
         return INSTANCE;
     }
