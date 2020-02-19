@@ -34,6 +34,7 @@ public class AutoScoreSimple extends CommandBase {
     @Override
     public void execute() {
         new SequentialCommandGroup(new ShootOne(shooter, 0.8), new ShootOne(shooter, 0.8), new ShootOne(shooter, 0.8));
+        //new Shoot(shooter, 0.8)
         while (autoTimer.get() >= 10) {
             drivetrain.tankDrive(-0.55, -0.5, 1);
         }

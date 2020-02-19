@@ -55,7 +55,7 @@ public class Drivetrain extends SubsystemBase {
         side = smoothLogisticInput(side) * scale;
         twist = smoothLogisticInput(twist) * scale;
 
-        if (button) {
+        if (!button) {
             double mod = ((-throttle+1)/2);
             forward *= mod;
             side *= mod;
@@ -65,6 +65,9 @@ public class Drivetrain extends SubsystemBase {
         drive.arcadeDrive(forward, twist);
         center.set(side);
         drive.feedWatchdog();
+        drive.setSafetyEnabled(false);
+        centerOne.setSafetyEnabled(false);
+        centerTwo.setSafetyEnabled(false);
     }
 
     public void slideDriveSimple(double forward, double side, double twist, double scale) {

@@ -106,6 +106,7 @@ public class Robot extends TimedRobot
         {
             autonomousCommand.cancel();
         }
+        WheelSpinner.setupColorMatch();
     }
 
     /**
@@ -115,6 +116,7 @@ public class Robot extends TimedRobot
     public void teleopPeriodic()
     {
         WheelSpinner.pushRawToDashboard();
+        WheelSpinner.detectNamedColor();
         SmartDashboard.putData("Accelerometer", acceleromenter);
     }
 
@@ -131,6 +133,6 @@ public class Robot extends TimedRobot
     @Override
     public void testPeriodic()
     {
-        WheelSpinner.pushRawToDashboard();
+        
     }
 }

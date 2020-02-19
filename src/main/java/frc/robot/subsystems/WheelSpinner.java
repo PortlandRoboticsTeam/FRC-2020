@@ -3,12 +3,11 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-import static frc.robot.Constants.*;
+//import static frc.robot.Constants.*;
 
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
@@ -25,12 +24,12 @@ public class WheelSpinner extends SubsystemBase {
     private final static I2C.Port i2cPort = I2C.Port.kOnboard;
     private final static ColorSensorV3 colorSensor = new ColorSensorV3(i2cPort);
 
-    private final ColorMatch m_colorMatcher = new ColorMatch();
+    private final static ColorMatch m_colorMatcher = new ColorMatch();
 
-    private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
-    private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
-    private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
-    private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
+    private final static Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+    private final static Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
+    private final static Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
+    private final static Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
     Counter motorCounter = new Counter(new DigitalInput(1));
     int position = 0;
@@ -49,7 +48,7 @@ public class WheelSpinner extends SubsystemBase {
     }
 
     //Important to run before detectNamedColor(), but only needs to run once
-    public void setupColorMatch() {
+    public static void setupColorMatch() {
         m_colorMatcher.addColorMatch(kBlueTarget);
         m_colorMatcher.addColorMatch(kGreenTarget);
         m_colorMatcher.addColorMatch(kRedTarget);
@@ -62,7 +61,7 @@ public class WheelSpinner extends SubsystemBase {
      * it has most likely detected
      */
 
-    public String detectNamedColor() {
+    public static void detectNamedColor() {
         Color detectedColor = colorSensor.getColor();
 
         String colorString;
@@ -91,7 +90,7 @@ public class WheelSpinner extends SubsystemBase {
         SmartDashboard.putNumber("Blue", detectedColor.blue);
         SmartDashboard.putNumber("Confidence", match.confidence);
         SmartDashboard.putString("Detected Color", colorString);
-        return colorChar;
+        //return colorChar;
     }
 
     public Color getColor() {
