@@ -8,19 +8,19 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.WheelSpinner;
 
-public class SpinSetTimes extends CommandBase {
-  /**
-   * Creates a new spinSetTimes.
-   */
-  public SpinSetTimes() {
-    // Use addRequirements() here to declare subsystem dependencies.
+public class SpinBack extends CommandBase {
+  private final WheelSpinner wheelSpinner;
+  
+  public SpinBack(WheelSpinner wheelSpinner) {
+    this.wheelSpinner = wheelSpinner;
+    addRequirements(wheelSpinner);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
