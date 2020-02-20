@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
@@ -61,28 +59,38 @@ public class WheelSpinner extends SubsystemBase {
      * it has most likely detected
      */
 
-    public static void detectNamedColor() {
+    public static int[] detectNamedColor() {
         Color detectedColor = colorSensor.getColor();
 
         String colorString;
-        String colorChar;
+        int[] colorChar = {0,0,0};
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
 
         if (match.color == kBlueTarget) {
             colorString = "Blue";
-            colorChar = "b";
+            colorChar[0] = 0;
+            colorChar[1] = 0;
+            colorChar[2] = 255;
         } else if (match.color == kRedTarget) {
             colorString = "Red";
-            colorChar = "r";
+            colorChar[0] = 255;
+            colorChar[1] = 0;
+            colorChar[2] = 0;
         } else if (match.color == kGreenTarget) {
             colorString = "Green";
-            colorChar = "g";
+            colorChar[0] = 0;
+            colorChar[1] = 255;
+            colorChar[2] = 0;
         } else if (match.color == kYellowTarget) {
             colorString = "Yellow";
-            colorChar = "y";
+            colorChar[0] = 255;
+            colorChar[1] = 255;
+            colorChar[2] = 0;
         } else {
             colorString = "Unknown";
-            colorChar = "u";
+            colorChar[0] = 255;
+            colorChar[1] = 255;
+            colorChar[2] = 255;
         }
 
         SmartDashboard.putNumber("Red", detectedColor.red);
@@ -90,7 +98,7 @@ public class WheelSpinner extends SubsystemBase {
         SmartDashboard.putNumber("Blue", detectedColor.blue);
         SmartDashboard.putNumber("Confidence", match.confidence);
         SmartDashboard.putString("Detected Color", colorString);
-        //return colorChar;
+        return colorChar;
     }
 
     public Color getColor() {

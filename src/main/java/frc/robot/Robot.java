@@ -33,6 +33,7 @@ public class Robot extends TimedRobot
     BuiltInAccelerometer acceleromenter = new BuiltInAccelerometer();
     AddressableLED m_led;
     AddressableLEDBuffer m_ledBuffer;
+    int m_rainbowFirstPixelHue = 0;
 
     /**
      * This method is run when the robot is first started up and should be used for any
@@ -46,7 +47,7 @@ public class Robot extends TimedRobot
         robotContainer = new RobotContainer();
         m_led = new AddressableLED(0);
 
-        m_ledBuffer = new AddressableLEDBuffer(30);
+        m_ledBuffer = new AddressableLEDBuffer(150);
         m_led.setLength(m_ledBuffer.getLength());
 
         m_led.setData(m_ledBuffer);
@@ -127,10 +128,11 @@ public class Robot extends TimedRobot
     public void teleopPeriodic()
     {
         WheelSpinner.pushRawToDashboard();
-        WheelSpinner.detectNamedColor();
+        int[] color = WheelSpinner.detectNamedColor();
         SmartDashboard.putData("Accelerometer", acceleromenter);
+        
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
-            m_ledBuffer.setRGB(i, 255, 0, 0);
+            m_ledBuffer.setRGB(i, color[0], color[1], color[2]);
          }
          
          m_led.setData(m_ledBuffer);
@@ -154,7 +156,7 @@ public class Robot extends TimedRobot
     }
 
     private void rainbow() {
-        int m_rainbowFirstPixelHue = 0;
+        
         // For every pixel
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
           // Calculate the hue - hue is easier for rainbows because the color
