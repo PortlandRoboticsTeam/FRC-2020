@@ -34,6 +34,7 @@ public class Robot extends TimedRobot
     AddressableLED m_led;
     AddressableLEDBuffer m_ledBuffer;
     int m_rainbowFirstPixelHue = 0;
+    int start = 0;
 
     /**
      * This method is run when the robot is first started up and should be used for any
@@ -82,6 +83,8 @@ public class Robot extends TimedRobot
     @Override
     public void disabledPeriodic()
     {
+        teamColors();
+        m_led.setData(m_ledBuffer);
     }
 
     /**
@@ -170,4 +173,14 @@ public class Robot extends TimedRobot
         // Check bounds
         m_rainbowFirstPixelHue %= 180;
       }
+
+
+    private void teamColors() {
+        for (var i = start; i < m_ledBuffer.getLength(); i++) {
+            final var sat = 0;
+            
+            m_ledBuffer.setHSV(i, 0, sat, 128);
+          }
+          
+    }
 }
