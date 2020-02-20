@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.AddressableLED;
+import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -29,6 +31,8 @@ public class Robot extends TimedRobot
     private RobotContainer robotContainer;
 
     BuiltInAccelerometer acceleromenter = new BuiltInAccelerometer();
+    AddressableLED m_led;
+    AddressableLEDBuffer m_ledBuffer;
 
     /**
      * This method is run when the robot is first started up and should be used for any
@@ -40,6 +44,13 @@ public class Robot extends TimedRobot
         // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
         // autonomous chooser on the dashboard.
         robotContainer = new RobotContainer();
+        m_led = new AddressableLED(0);
+
+        m_ledBuffer = new AddressableLEDBuffer(30);
+        m_led.setLength(m_ledBuffer.getLength());
+
+        m_led.setData(m_ledBuffer);
+        m_led.start();
     }
 
     /**
@@ -118,6 +129,11 @@ public class Robot extends TimedRobot
         WheelSpinner.pushRawToDashboard();
         WheelSpinner.detectNamedColor();
         SmartDashboard.putData("Accelerometer", acceleromenter);
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+            m_ledBuffer.setRGB(i, 255, 0, 0);
+         }
+         
+         m_led.setData(m_ledBuffer);
     }
 
     @Override
@@ -133,6 +149,23 @@ public class Robot extends TimedRobot
     @Override
     public void testPeriodic()
     {
-        
+        rainbow();
+        m_led.setData(m_ledBuffer);
     }
+
+    private void rainbow() {
+        int m_rainbowFirstPixelHue = 0;
+        // For every pixel
+        for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+          // Calculate the hue - hue is easier for rainbows because the color
+          // shape is a circle so only one value needs to precess
+          final var hue = (m_rainbowFirstPixelHue + (i * 180 / m_ledBuffer.getLength())) % 180;
+          // Set the value
+          m_ledBuffer.setHSV(i, hue, 255, 128);
+        }
+        // Increase by to make the rainbow "move"
+        m_rainbowFirstPixelHue += 3;
+        // Check bounds
+        m_rainbowFirstPixelHue %= 180;
+      }
 }

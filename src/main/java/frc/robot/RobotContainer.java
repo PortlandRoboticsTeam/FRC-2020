@@ -30,7 +30,7 @@ public class RobotContainer
     //private final Elevator elevator = new Elevator();
     //private final Intake intake = new Intake();
     private final Shooter shooter = new Shooter();
-    //private final WheelSpinner wheelSpinner = new WheelSpinner();
+    private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     //Command definitions
     private final AutoDrive simpleAutonomousCommand = new AutoDrive(drivetrain);
@@ -38,6 +38,8 @@ public class RobotContainer
 
     private final Shoot shoot = new Shoot(shooter, 0.8);
     private final Succ succ = new Succ(shooter);
+    private final SpinForward spinFoward = new SpinForward(wheelSpinner);
+    private final SpinBack spinBack = new SpinBack(wheelSpinner);
 
     //Joystick definitions
     public static Joystick m_stick = new Joystick(mStickPort);
@@ -75,10 +77,14 @@ public class RobotContainer
         //Names buttons
         JoystickButton m_3 = new JoystickButton(m_stick, 3);
         JoystickButton m_4 = new JoystickButton(m_stick, 4);
+        JoystickButton m_5 = new JoystickButton(m_stick, 5);
+        JoystickButton m_6 = new JoystickButton(m_stick, 6);
 
         //Binds buttons
         m_3.whenPressed(shoot);
         m_4.whenPressed(succ);
+        m_5.whenPressed(spinFoward);
+        m_6.whenPressed(spinBack);
 
     }
 

@@ -31,7 +31,7 @@ public class WheelSpinner extends SubsystemBase {
     private final static Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
     private final static Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
-    Counter motorCounter = new Counter(new DigitalInput(1));
+    //Counter motorCounter = new Counter(new DigitalInput(1));
     int position = 0;
 
     //private final PWMTalonSRX wheelMotor = new PWMTalonSRX(wheelSpinnerPortNum);
@@ -110,14 +110,14 @@ public class WheelSpinner extends SubsystemBase {
     }
 
     //To make the encoder code simpler, try to run it forward most of the time
-    public void spin() {
+    public void spinForward() {
         //wheelMotor.set(0.8);
-        position += motorCounter.get();
+        //position += motorCounter.get();
     }
 
     public void spinBack() {
         //wheelMotor.set(-0.8);
-        position -= motorCounter.get();
+        //position -= motorCounter.get();
     }
 
     public void spinToColor(Color targetColor, int offset) {
