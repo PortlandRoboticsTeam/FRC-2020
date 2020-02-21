@@ -35,6 +35,7 @@ public class Robot extends TimedRobot
     AddressableLEDBuffer m_ledBuffer;
     int m_rainbowFirstPixelHue = 0;
     int start = 0;
+    double x = 0;
 
     /**
      * This method is run when the robot is first started up and should be used for any
@@ -174,13 +175,27 @@ public class Robot extends TimedRobot
         m_rainbowFirstPixelHue %= 180;
       }
 
-
+      
     private void teamColors() {
-        for (var i = start; i < m_ledBuffer.getLength(); i++) {
-            final var sat = 0;
-            
-            m_ledBuffer.setHSV(i, 0, sat, 128);
+        x++;
+        for (var i = 0; i < m_ledBuffer.getLength(); i+=4) {
+            m_ledBuffer.setHSV(i, 0, (int)(128*Math.cos(((Math.PI / 128) * x)-1) + 128), 
+                                     (int)(128*Math.cos(((Math.PI / 64) * x)-1) + 128));
           }
+        for (var i = 1; i < m_ledBuffer.getLength(); i+=4) {
+            m_ledBuffer.setHSV(i, 0, (int)(128*Math.cos(((Math.PI / 128) * (x+64))-1) + 128), 
+                                     (int)(128*Math.cos(((Math.PI / 64) * (x+32))-1) + 128));
+        }
+        for (var i = 2; i < m_ledBuffer.getLength(); i+=4) {
+            m_ledBuffer.setHSV(i, 0, (int)(128*Math.cos(((Math.PI / 128) * (x+128))-1) + 128), 
+                                     (int)(128*Math.cos(((Math.PI / 64) * (x+64))-1) + 128));
+        }
+        for (var i = 3; i < m_ledBuffer.getLength(); i+=4) {
+            m_ledBuffer.setHSV(i, 0, (int)(128*Math.cos(((Math.PI / 128) * (x+192))-1) + 128), 
+                                     (int)(128*Math.cos(((Math.PI / 64) * (x+96))-1) + 128));
+        }
+          
+         
           
     }
 }
