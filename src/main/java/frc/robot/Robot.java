@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
@@ -44,14 +45,14 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit()
     {
-        // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
-        // autonomous chooser on the dashboard.
+        //CameraServer.getInstance().startAutomaticCapture(0);
+        //CameraServer.getInstance().startAutomaticCapture(1);
+        
         robotContainer = new RobotContainer();
+        
         m_led = new AddressableLED(0);
-
         m_ledBuffer = new AddressableLEDBuffer(150);
         m_led.setLength(m_ledBuffer.getLength());
-
         m_led.setData(m_ledBuffer);
         m_led.start();
     }

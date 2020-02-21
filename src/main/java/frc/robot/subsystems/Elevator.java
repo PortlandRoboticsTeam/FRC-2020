@@ -17,8 +17,8 @@ public class Elevator extends SubsystemBase {
      */
     private final static Elevator INSTANCE = new Elevator();
 
-    private final PWMTalonSRX liftMotor = new PWMTalonSRX(elevator1PortNum);
-    private final PWMTalonSRX hookMotor = new PWMTalonSRX(elevator2PortNum);
+    //private final PWMTalonSRX liftMotor = new PWMTalonSRX(elevator1PortNum);
+    //private final PWMTalonSRX hookMotor = new PWMTalonSRX(elevator2PortNum);
 
 
     /**
@@ -32,32 +32,17 @@ public class Elevator extends SubsystemBase {
 
     public void driveElevator(double forward, double side, double throttle, boolean trigger, double scale) {
         double mod = ((-throttle+1)/2);
-        liftMotor.set(forward*mod*scale);
+        //liftMotor.set(forward*mod*scale);
         if(trigger) {
-            hookMotor.set(side*mod*scale);
+            //hookMotor.set(side*mod*scale);
         }
     }
     
 
-    public void elevatorUp() {
-        liftMotor.set(0.8);
-    }
-
-    public void elevatorDown() {
-        liftMotor.set(-0.8);
-    }
-
-    public void hookForward() {
-        hookMotor.set(0.8);
-    }
-
-    public void hookBack() {
-        hookMotor.set(-0.8);
-    }
 
     public void stop() {
-        liftMotor.set(0.00001);
-        hookMotor.set(0.00001);
+        //liftMotor.stopMotor();
+        //hookMotor.stopMotor();
     }
 
 
