@@ -34,7 +34,7 @@ public class Succ extends CommandBase {
      */
     @Override
     public void execute() {
-        shooter.succ(0.8);
+        shooter.succ(0.5);
     }
 
     /**

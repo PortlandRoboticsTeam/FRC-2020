@@ -1,9 +1,10 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-//import static frc.robot.Constants.*;
+import static frc.robot.Constants.*;
 
 public class Shooter extends SubsystemBase {
 
@@ -16,8 +17,8 @@ public class Shooter extends SubsystemBase {
      */
     private final static Shooter INSTANCE = new Shooter();
 
-    //private final Spark shooterTop = new Spark(shooterPortNum);
-    //private final Spark shooterBottom = new Spark(shooterPortNum);
+    private final WPI_VictorSPX shooterTop = new WPI_VictorSPX(shooterTopPortNum);
+    private final WPI_VictorSPX shooterBottom = new WPI_VictorSPX(shooterBottomPortNum);
 
     /**
      * Creates a new instance of this Shooter.
@@ -29,8 +30,8 @@ public class Shooter extends SubsystemBase {
     }
 
     public void shoot(double speed) {
-        //shooterTop.set(speed);
-        //shooterBottom.set(-speed);
+        shooterTop.set(speed);
+        shooterBottom.set(-speed);
     }
 
     public void succ(double speed) {
@@ -39,8 +40,8 @@ public class Shooter extends SubsystemBase {
     }
 
     public void stop() {
-        //shooterTop.stopMotor();
-        //shooterBottom.stopMotor();
+        shooterTop.stopMotor();
+        shooterBottom.stopMotor();
     }
 
     /**

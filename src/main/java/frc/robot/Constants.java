@@ -21,19 +21,20 @@ public final class Constants
     public static final int teamNumber = 7195;
 
     //CAN port numberings
-    public static final int wheel1PortNum = 1;  //front right
-    public static final int wheel2PortNum = 2;  //rear right
-    public static final int wheel3PortNum = 3;  //front left
-    public static final int wheel4PortNum = 4;  //rear left
-    public static final int wheel5PortNum = 5;  //center one
-    public static final int wheel6PortNum = 6;  //center two
+    public static final int wheel1PortNum = 5;  //front right
+    public static final int wheel2PortNum = 6;  //rear right
+    public static final int wheel3PortNum = 1;  //front left
+    public static final int wheel4PortNum = 2;  //rear left
+    public static final int wheel5PortNum = 3;  //center one
+    public static final int wheel6PortNum = 4;  //center two
 
     //PWM port numberings
     public static final int elevator1PortNum = 7;
     public static final int elevator2PortNum = 8;
     public static final int intakePortNum = 0;
-    public static final int shooterPortNum = 9;
-    public static final int wheelSpinnerPortNum = 10;
+    public static final int shooterBottomPortNum = 9;
+    public static final int shooterTopPortNum = 10;
+    public static final int wheelSpinnerPortNum = 11;
 
     public static final int mStickPort = 0;
     public static final int sStickPort = 1;

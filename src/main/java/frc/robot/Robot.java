@@ -7,7 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
@@ -50,11 +49,13 @@ public class Robot extends TimedRobot
         
         robotContainer = new RobotContainer();
         
+        /*
         m_led = new AddressableLED(0);
         m_ledBuffer = new AddressableLEDBuffer(150);
         m_led.setLength(m_ledBuffer.getLength());
         m_led.setData(m_ledBuffer);
         m_led.start();
+        */
     }
 
     /**
@@ -85,8 +86,8 @@ public class Robot extends TimedRobot
     @Override
     public void disabledPeriodic()
     {
-        teamColors();
-        m_led.setData(m_ledBuffer);
+        //teamColors();
+        //m_led.setData(m_ledBuffer);
     }
 
     /**
@@ -132,15 +133,17 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic()
     {
-        WheelSpinner.pushRawToDashboard();
+        //WheelSpinner.pushRawToDashboard();
+        /*
         int[] color = WheelSpinner.detectNamedColor();
-        SmartDashboard.putData("Accelerometer", acceleromenter);
+        //SmartDashboard.putData("Accelerometer", acceleromenter);
         
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, color[0], color[1], color[2]);
          }
          
          m_led.setData(m_ledBuffer);
+        */
     }
 
     @Override
@@ -156,8 +159,8 @@ public class Robot extends TimedRobot
     @Override
     public void testPeriodic()
     {
-        rainbow();
-        m_led.setData(m_ledBuffer);
+        //rainbow();
+        //m_led.setData(m_ledBuffer);
     }
 
     private void rainbow() {
@@ -195,8 +198,6 @@ public class Robot extends TimedRobot
             m_ledBuffer.setHSV(i, 0, (int)(128*Math.cos(((Math.PI / 128) * (x+192))-1) + 128), 
                                      (int)(128*Math.cos(((Math.PI / 64) * (x+96))-1) + 128));
         }
-          
-         
           
     }
 }

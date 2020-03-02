@@ -17,8 +17,8 @@ public class Elevator extends SubsystemBase {
      */
     private final static Elevator INSTANCE = new Elevator();
 
-    //private final PWMTalonSRX liftMotor = new PWMTalonSRX(elevator1PortNum);
-    //private final PWMTalonSRX hookMotor = new PWMTalonSRX(elevator2PortNum);
+    //private final WPI_VictorSPX liftMotor = new WPI_VictorSPX(elevator1PortNum);
+    //private final WPI_VictorSPX hookMotor = new WPI_VictorSPX(elevator2PortNum);
 
 
     /**

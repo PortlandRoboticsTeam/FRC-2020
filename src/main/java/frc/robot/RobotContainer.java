@@ -27,19 +27,19 @@ public class RobotContainer
 {
     // Subsystem definitions
     private final Drivetrain drivetrain = new Drivetrain();
-    private final Elevator elevator = new Elevator();
+    //private final Elevator elevator = new Elevator();
     //private final Intake intake = new Intake();
     private final Shooter shooter = new Shooter();
-    private final WheelSpinner wheelSpinner = new WheelSpinner();
+    //private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     //Command definitions
     private final AutoDrive simpleAutonomousCommand = new AutoDrive(drivetrain);
     private final AutoScoreSimple complexAutonomousCommand = new AutoScoreSimple(drivetrain);
 
-    private final Shoot shoot = new Shoot(shooter, 0.8);
+    private final Shoot shoot = new Shoot(shooter, 0.5);
     private final Succ succ = new Succ(shooter);
-    private final SpinForward spinFoward = new SpinForward(wheelSpinner);
-    private final SpinBack spinBack = new SpinBack(wheelSpinner);
+    //private final SpinForward spinFoward = new SpinForward(wheelSpinner);
+    //private final SpinBack spinBack = new SpinBack(wheelSpinner);
 
     //Joystick definitions
     public static Joystick m_stick = new Joystick(mStickPort);
@@ -69,13 +69,14 @@ public class RobotContainer
                         () -> m_stick.getTwist(),
                         () -> m_stick.getThrottle(),
                         () -> m_stick.getTrigger()));
-
+        /*
         elevator.setDefaultCommand(
                 new ElevatorDrive(elevator,
                         () -> s_stick.getY(),
                         () -> s_stick.getX(),
                         () -> s_stick.getThrottle(),
                         () -> s_stick.getTrigger()));
+        */
 
     }
 
@@ -90,8 +91,8 @@ public class RobotContainer
         //Binds buttons
         m_3.whenPressed(shoot);
         m_4.whenPressed(succ);
-        m_5.whenPressed(spinFoward);
-        m_6.whenPressed(spinBack);
+        //m_5.whenPressed(spinFoward);
+        //m_6.whenPressed(spinBack);
 
     }
 
