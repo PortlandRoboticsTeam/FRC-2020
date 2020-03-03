@@ -30,10 +30,10 @@ public final class Constants
 
     //PWM port numberings
     public static final int elevator1PortNum = 7;
-    public static final int elevator2PortNum = 8;
+    public static final int elevator2PortNum = 9;
     public static final int intakePortNum = 0;
-    public static final int shooterBottomPortNum = 9;
-    public static final int shooterTopPortNum = 10;
+    public static final int shooterBottomPortNum = 7;
+    public static final int shooterTopPortNum = 8;
     public static final int wheelSpinnerPortNum = 11;
 
     public static final int mStickPort = 0;

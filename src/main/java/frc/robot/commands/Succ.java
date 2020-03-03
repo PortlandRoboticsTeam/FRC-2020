@@ -66,6 +66,6 @@ public class Succ extends CommandBase {
      */
     @Override
     public void end(boolean interrupted) {
-        shooter.stop();
+        
     }
 }

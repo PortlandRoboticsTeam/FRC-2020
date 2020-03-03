@@ -1,10 +1,11 @@
 package frc.robot.subsystems;
 
-
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import static frc.robot.Constants.*;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class Elevator extends SubsystemBase {
 
@@ -18,7 +19,7 @@ public class Elevator extends SubsystemBase {
     private final static Elevator INSTANCE = new Elevator();
 
     //private final WPI_VictorSPX liftMotor = new WPI_VictorSPX(elevator1PortNum);
-    //private final WPI_VictorSPX hookMotor = new WPI_VictorSPX(elevator2PortNum);
+    private final WPI_VictorSPX hookMotor = new WPI_VictorSPX(elevator2PortNum);
 
 
     /**
@@ -34,7 +35,7 @@ public class Elevator extends SubsystemBase {
         double mod = ((-throttle+1)/2);
         //liftMotor.set(forward*mod*scale);
         if(trigger) {
-            //hookMotor.set(side*mod*scale);
+            hookMotor.set(side*mod*scale);
         }
     }
     

@@ -30,13 +30,13 @@ public class Shooter extends SubsystemBase {
     }
 
     public void shoot(double speed) {
-        shooterTop.set(speed);
-        shooterBottom.set(-speed);
+        shooterTop.set(-speed);
+        shooterBottom.set(speed);
     }
 
     public void succ(double speed) {
-        //shooterTop.set(-speed);
-        //shooterBottom.set(speed);
+        shooterTop.set(speed);
+        shooterBottom.set(-speed);
     }
 
     public void stop() {

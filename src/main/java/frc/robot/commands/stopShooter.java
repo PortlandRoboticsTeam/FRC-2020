@@ -4,13 +4,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Shooter;
 
 
-public class Shoot extends CommandBase {
+public class stopShooter extends CommandBase {
     private final Shooter shooter;
-    private final Double speed;
 
-    public Shoot(Shooter shooter, Double speedInput) {
+    public stopShooter(Shooter shooter) {
         this.shooter = shooter;
-        speed = speedInput;
         addRequirements(shooter);
     }
 
@@ -21,7 +19,7 @@ public class Shoot extends CommandBase {
 
     @Override
     public void execute() {
-        shooter.shoot(speed);
+        shooter.stop();
         
     }
 
