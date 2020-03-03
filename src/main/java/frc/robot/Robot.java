@@ -49,13 +49,13 @@ public class Robot extends TimedRobot
         
         robotContainer = new RobotContainer();
         
-        /*
+        
         m_led = new AddressableLED(0);
         m_ledBuffer = new AddressableLEDBuffer(150);
         m_led.setLength(m_ledBuffer.getLength());
         m_led.setData(m_ledBuffer);
         m_led.start();
-        */
+        
     }
 
     /**
@@ -133,8 +133,8 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic()
     {
-        //WheelSpinner.pushRawToDashboard();
-        /*
+        WheelSpinner.pushRawToDashboard();
+        
         int[] color = WheelSpinner.detectNamedColor();
         //SmartDashboard.putData("Accelerometer", acceleromenter);
         
@@ -143,7 +143,7 @@ public class Robot extends TimedRobot
          }
          
          m_led.setData(m_ledBuffer);
-        */
+        
     }
 
     @Override

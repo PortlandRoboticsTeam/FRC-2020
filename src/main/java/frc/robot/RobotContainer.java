@@ -26,19 +26,19 @@ import static frc.robot.Constants.*;
 public class RobotContainer
 {
     // Subsystem definitions
-    //private final Drivetrain drivetrain = new Drivetrain();
+    private final Drivetrain drivetrain = new Drivetrain();
     private final Elevator elevator = new Elevator();
     //private final Intake intake = new Intake();
     private final Shooter shooter = new Shooter();
-    //private final WheelSpinner wheelSpinner = new WheelSpinner();
+    private final WheelSpinner wheelSpinner = new WheelSpinner();
 
     //Command definitions
-    //private final AutoDrive simpleAutonomousCommand = new AutoDrive(drivetrain);
-    //private final AutoScoreSimple complexAutonomousCommand = new AutoScoreSimple(drivetrain);
+    private final AutoDrive simpleAutonomousCommand = new AutoDrive(drivetrain);
+    private final AutoScoreSimple complexAutonomousCommand = new AutoScoreSimple(drivetrain);
 
     private final Shoot shoot = new Shoot(shooter, 1.0);
     private final Succ succ = new Succ(shooter);
-    private final stopShooter stopShooter = new stopShooter(shooter);
+    private final StopShooter stopShooter = new StopShooter(shooter);
     //private final SpinForward spinFoward = new SpinForward(wheelSpinner);
     //private final SpinBack spinBack = new SpinBack(wheelSpinner);
 
@@ -56,14 +56,14 @@ public class RobotContainer
         configureButtonBindings();
 
         //Add options the autonomous chooser
-        //autoChooser.addOption("Autonomous Drive", simpleAutonomousCommand);
-        //autoChooser.addOption("[Incomplete] Autonomous Score", complexAutonomousCommand);
+        autoChooser.addOption("Autonomous Drive", simpleAutonomousCommand);
+        autoChooser.addOption("[Incomplete] Autonomous Score", complexAutonomousCommand);
 
         // Put the chooser on the dashboard
         Shuffleboard.getTab("Autonomous").add(autoChooser);
 
         //Set driving mode
-        /*
+        
         drivetrain.setDefaultCommand(
                 new DriveSlide(drivetrain,
                         () -> m_stick.getY(),
@@ -71,15 +71,15 @@ public class RobotContainer
                         () -> m_stick.getTwist(),
                         () -> m_stick.getThrottle(),
                         () -> m_stick.getTrigger()));
-        */
         
+        /*
         elevator.setDefaultCommand(
                 new ElevatorDrive(elevator,
-                        () -> m_stick.getY(),
-                        () -> m_stick.getX(),
-                        () -> m_stick.getThrottle(),
-                        () -> m_stick.getTrigger()));
-        
+                        () -> s_stick.getY(),
+                        () -> s_stick.getX(),
+                        () -> s_stick.getThrottle(),
+                        () -> s_stick.getTrigger()));
+        */
 
     }
 
