@@ -9,12 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.WheelSpinner;
 
 
 /**
@@ -163,6 +160,7 @@ public class Robot extends TimedRobot
         //m_led.setData(m_ledBuffer);
     }
 
+    /*
     private void rainbow() {
         
         // For every pixel
@@ -198,6 +196,6 @@ public class Robot extends TimedRobot
             m_ledBuffer.setHSV(i, 0, (int)(128*Math.cos(((Math.PI / 128) * (x+192))-1) + 128), 
                                      (int)(128*Math.cos(((Math.PI / 64) * (x+96))-1) + 128));
         }
-          
-    }
+        
+    } */
 }

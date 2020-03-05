@@ -93,7 +93,7 @@ public class RobotContainer
     private void configureButtonBindings() {
         //Names buttons
         JoystickButton m_3 = new JoystickButton(m_stick, 3);
-        JoystickButton m_4 = new JoystickButton(m_stick, 4);
+        //JoystickButton m_4 = new JoystickButton(m_stick, 4);
         JoystickButton m_5 = new JoystickButton(m_stick, 5);
         JoystickButton m_6 = new JoystickButton(m_stick, 6);
 
