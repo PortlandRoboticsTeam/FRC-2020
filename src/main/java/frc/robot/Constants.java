@@ -28,14 +28,14 @@ public final class Constants
     public static final int wheel5PortNum = 3;  //center one
     public static final int wheel6PortNum = 4;  //center two
 
-    //PWM port numberings
-    public static final int elevator1PortNum = 7;
-    public static final int elevator2PortNum = 7;
-    public static final int intakePortNum = 0;
+    public static final int elevatorLiftPortNum = 12;
+    public static final int elevatorHookPortNum = 7;
+    public static final int intakePortNum = 11;
     public static final int shooterBottomPortNum = 8;
     public static final int shooterTopPortNum = 9;
-    public static final int wheelSpinnerPortNum = 11;
+    public static final int wheelSpinnerPortNum = 10;
 
+    //USB Port Numberings
     public static final int mStickPort = 0;
     public static final int sStickPort = 1;
 }

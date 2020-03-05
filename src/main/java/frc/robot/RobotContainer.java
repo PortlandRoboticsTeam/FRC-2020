@@ -37,10 +37,16 @@ public class RobotContainer
     private final AutoScoreSimple complexAutonomousCommand = new AutoScoreSimple(drivetrain);
 
     private final Shoot shoot = new Shoot(shooter, 1.0);
-    private final Succ succ = new Succ(shooter);
     private final StopShooter stopShooter = new StopShooter(shooter);
-    //private final SpinForward spinFoward = new SpinForward(wheelSpinner);
-    //private final SpinBack spinBack = new SpinBack(wheelSpinner);
+    private final SpinForward spinFoward = new SpinForward(wheelSpinner);
+    private final SpinBack spinBack = new SpinBack(wheelSpinner);
+    private final SpinStop spinStop = new SpinStop(wheelSpinner);
+
+    private final ElevatorUp elevatorUp = new ElevatorUp(elevator);
+    private final ElevatorDown elevatorDown = new ElevatorDown(elevator);
+    private final ElevatorHookForward elevatorHookForward = new ElevatorHookForward(elevator);
+    private final ElevatorHookReverse elevatorHookReverse = new ElevatorHookReverse(elevator);
+    private final ElevatorStop stopElevator = new ElevatorStop(elevator);
 
     //Joystick definitions
     public static Joystick m_stick = new Joystick(mStickPort);
@@ -91,13 +97,28 @@ public class RobotContainer
         JoystickButton m_5 = new JoystickButton(m_stick, 5);
         JoystickButton m_6 = new JoystickButton(m_stick, 6);
 
+        JoystickButton s_3 = new JoystickButton(s_stick, 3);
+        JoystickButton s_4 = new JoystickButton(s_stick, 4);
+        JoystickButton s_5 = new JoystickButton(s_stick, 5);
+        JoystickButton s_6 = new JoystickButton(s_stick, 6);
+
         //Binds buttons
         m_3.whileHeld(shoot);
-        m_4.whileHeld(succ);
         m_3.whenReleased(stopShooter);
-        m_4.whenReleased(stopShooter);
-        //m_5.whenPressed(spinFoward);
-        //m_6.whenPressed(spinBack);
+        m_5.whenPressed(spinFoward);
+        m_6.whenPressed(spinBack);
+        m_5.whenReleased(spinStop);
+        m_6.whenReleased(spinStop);
+
+        s_3.whileHeld(elevatorDown);
+        s_4.whileHeld(elevatorUp);
+        s_5.whileHeld(elevatorHookForward);
+        s_6.whileHeld(elevatorHookReverse);
+
+        s_3.whenReleased(stopElevator);
+        s_4.whenReleased(stopElevator);
+        s_5.whenReleased(stopElevator);
+        s_6.whenReleased(stopElevator);
 
     }
 

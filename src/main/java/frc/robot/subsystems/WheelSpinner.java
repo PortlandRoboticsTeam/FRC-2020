@@ -5,7 +5,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-//import static frc.robot.Constants.*;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import static frc.robot.Constants.*;
 
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
@@ -32,7 +34,7 @@ public class WheelSpinner extends SubsystemBase {
     //Counter motorCounter = new Counter(new DigitalInput(1));
     int position = 0;
 
-    //private final PWMTalonSRX wheelMotor = new PWMTalonSRX(wheelSpinnerPortNum);
+    private final WPI_VictorSPX wheelMotor = new WPI_VictorSPX(wheelSpinnerPortNum);
 
     private final static WheelSpinner INSTANCE = new WheelSpinner();
 
@@ -119,12 +121,12 @@ public class WheelSpinner extends SubsystemBase {
 
     //To make the encoder code simpler, try to run it forward most of the time
     public void spinForward() {
-        //wheelMotor.set(0.8);
+        wheelMotor.set(0.8);
         //position += motorCounter.get();
     }
 
     public void spinBack() {
-        //wheelMotor.set(-0.8);
+        wheelMotor.set(-0.8);
         //position -= motorCounter.get();
     }
 
@@ -136,7 +138,7 @@ public class WheelSpinner extends SubsystemBase {
     }
      
     public void stop() {
-        //wheelMotor.stopMotor();
+        wheelMotor.stopMotor();
     }
     
     public static WheelSpinner getInstance() {

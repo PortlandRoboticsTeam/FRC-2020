@@ -9,49 +9,46 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 public class Elevator extends SubsystemBase {
 
-// Any variables/fields used in the constructor must appear before the "INSTANCE" variable
-// so that they are initialized before the constructor is called.
-
-    /**
-     * The Singleton instance of this Elevator. External classes should
-     * use the {@link #getInstance()} method to get the instance.
-     */
     private final static Elevator INSTANCE = new Elevator();
 
-    //private final WPI_VictorSPX liftMotor = new WPI_VictorSPX(elevator1PortNum);
-    private final WPI_VictorSPX hookMotor = new WPI_VictorSPX(elevator2PortNum);
+    private final WPI_VictorSPX liftMotor = new WPI_VictorSPX(elevatorLiftPortNum);
+    private final WPI_VictorSPX hookMotor = new WPI_VictorSPX(elevatorHookPortNum);
 
-
-    /**
-     * Creates a new instance of this Elevator.
-     * This constructor is private since this class is a Singleton. External classes
-     * should use the {@link #getInstance()} method to get the instance.
-     */
     public Elevator() {
 
     }
 
     public void driveElevator(double forward, double side, double throttle, boolean trigger, double scale) {
         double mod = ((-throttle+1)/2);
-        //liftMotor.set(forward*mod*scale);
+        liftMotor.set(forward*mod*scale);
         if(trigger) {
             hookMotor.set(side*mod*scale);
         }
     }
+
+    public void elevatorUp() {
+        liftMotor.set(0.5);
+    }
+
+    public void elevatorDown() {
+        liftMotor.set(-0.5);
+    }
     
+    public void hookForward() {
+        hookMotor.set(0.5);
+    }
 
-
-    public void stop() {
-        //liftMotor.stopMotor();
-        //hookMotor.stopMotor();
+    public void hookBack() {
+        hookMotor.set(-0.5);
     }
 
 
-    /**
-     * Returns the Singleton instance of this Elevator. This static method
-     * should be used -- {@code Elevator.getInstance();} -- by external
-     * classes, rather than the constructor to get the instance of this class.
-     */
+    public void stop() {
+        liftMotor.stopMotor();
+        hookMotor.stopMotor();
+    }
+
+
     public static Elevator getInstance() {
         return INSTANCE;
     }

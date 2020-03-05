@@ -65,9 +65,9 @@ public class Drivetrain extends SubsystemBase {
         drive.arcadeDrive(forward, twist);
         center.set(side);
         drive.feedWatchdog();
-        drive.setSafetyEnabled(false);
-        centerOne.setSafetyEnabled(false);
-        centerTwo.setSafetyEnabled(false);
+        //drive.setSafetyEnabled(false);
+        //centerOne.setSafetyEnabled(false);
+        //centerTwo.setSafetyEnabled(false);
     }
 
     public void slideDriveSimple(double forward, double side, double twist, double scale) {

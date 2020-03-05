@@ -30,7 +30,7 @@ public class Robot extends TimedRobot
 
     private RobotContainer robotContainer;
 
-    BuiltInAccelerometer acceleromenter = new BuiltInAccelerometer();
+    //BuiltInAccelerometer acceleromenter = new BuiltInAccelerometer();
     AddressableLED m_led;
     AddressableLEDBuffer m_ledBuffer;
     int m_rainbowFirstPixelHue = 0;
@@ -49,13 +49,13 @@ public class Robot extends TimedRobot
         
         robotContainer = new RobotContainer();
         
-        
+        /*
         m_led = new AddressableLED(0);
         m_ledBuffer = new AddressableLEDBuffer(150);
         m_led.setLength(m_ledBuffer.getLength());
         m_led.setData(m_ledBuffer);
         m_led.start();
-        
+        */
     }
 
     /**
@@ -124,7 +124,7 @@ public class Robot extends TimedRobot
         {
             autonomousCommand.cancel();
         }
-        WheelSpinner.setupColorMatch();
+        //WheelSpinner.setupColorMatch();
     }
 
     /**
@@ -133,17 +133,17 @@ public class Robot extends TimedRobot
     @Override
     public void teleopPeriodic()
     {
-        WheelSpinner.pushRawToDashboard();
+        //WheelSpinner.pushRawToDashboard();
         
-        int[] color = WheelSpinner.detectNamedColor();
+        //int[] color = WheelSpinner.detectNamedColor();
         //SmartDashboard.putData("Accelerometer", acceleromenter);
-        
+        /*
         for (var i = 0; i < m_ledBuffer.getLength(); i++) {
             m_ledBuffer.setRGB(i, color[0], color[1], color[2]);
          }
          
          m_led.setData(m_ledBuffer);
-        
+        */
     }
 
     @Override
