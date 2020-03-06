@@ -12,6 +12,7 @@ public class Elevator extends SubsystemBase {
 
     private final WPI_VictorSPX liftMotor = new WPI_VictorSPX(elevatorLiftPortNum);
     private final WPI_VictorSPX hookMotor = new WPI_VictorSPX(elevatorHookPortNum);
+    private final WPI_VictorSPX windowMotor = new WPI_VictorSPX(elevatorDownPortNum);
 
     public Elevator() {
 
@@ -39,6 +40,10 @@ public class Elevator extends SubsystemBase {
 
     public void hookBack() {
         hookMotor.set(-0.5);
+    }
+
+    public void liftBot() {
+        windowMotor.set(-0.5);
     }
 
 

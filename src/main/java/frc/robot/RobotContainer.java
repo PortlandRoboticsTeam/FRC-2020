@@ -46,6 +46,7 @@ public class RobotContainer
     private final ElevatorDown elevatorDown = new ElevatorDown(elevator);
     private final ElevatorHookForward elevatorHookForward = new ElevatorHookForward(elevator);
     private final ElevatorHookReverse elevatorHookReverse = new ElevatorHookReverse(elevator);
+    private final ElevatorLiftBot elevatorLiftBot = new ElevatorLiftBot(elevator);
     private final ElevatorStop stopElevator = new ElevatorStop(elevator);
 
     //Joystick definitions
@@ -93,7 +94,7 @@ public class RobotContainer
     private void configureButtonBindings() {
         //Names buttons
         JoystickButton m_3 = new JoystickButton(m_stick, 3);
-        //JoystickButton m_4 = new JoystickButton(m_stick, 4);
+        JoystickButton m_4 = new JoystickButton(m_stick, 4);
         JoystickButton m_5 = new JoystickButton(m_stick, 5);
         JoystickButton m_6 = new JoystickButton(m_stick, 6);
 
@@ -105,6 +106,8 @@ public class RobotContainer
         //Binds buttons
         m_3.whileHeld(shoot);
         m_3.whenReleased(stopShooter);
+        m_4.whileHeld(elevatorLiftBot);
+        m_4.whenReleased(stopElevator);
         m_5.whenPressed(spinFoward);
         m_6.whenPressed(spinBack);
         m_5.whenReleased(spinStop);
