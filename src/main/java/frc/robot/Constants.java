@@ -30,10 +30,13 @@ public final class Constants
 
     public static final int elevatorLiftPortNum = 12;
     public static final int elevatorHookPortNum = 7;
-    public static final int intakePortNum = 11;
-    public static final int shooterBottomPortNum = 8;
-    public static final int shooterTopPortNum = 9;
-    public static final int wheelSpinnerPortNum = 10;
+    public static final int elevatorDownPortNum = 10;
+    public static final int intakePortNum = 0;
+    public static final int shooterBottomPortNum = 11;
+    public static final int shooterTopPortNum = 8;
+    public static final int wheelSpinnerPortNum = 9;
+
+    //A:7 B:8 C:9 D:10, E:11, F:12
 
     //USB Port Numberings
     public static final int mStickPort = 0;
