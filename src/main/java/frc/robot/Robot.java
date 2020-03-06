@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.AddressableLED;
 import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -41,8 +42,8 @@ public class Robot extends TimedRobot
     @Override
     public void robotInit()
     {
-        //CameraServer.getInstance().startAutomaticCapture(0);
-        //CameraServer.getInstance().startAutomaticCapture(1);
+        CameraServer.getInstance().startAutomaticCapture(0);
+        CameraServer.getInstance().startAutomaticCapture(1);
         
         robotContainer = new RobotContainer();
         

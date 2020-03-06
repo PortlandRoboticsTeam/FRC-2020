@@ -43,13 +43,18 @@ public class Elevator extends SubsystemBase {
     }
 
     public void liftBot() {
-        windowMotor.set(-0.5);
+        windowMotor.set(1.0);
+    }
+
+    public void liftBotReverse() {
+        windowMotor.set(-1.0);
     }
 
 
     public void stop() {
         liftMotor.stopMotor();
         hookMotor.stopMotor();
+        windowMotor.stopMotor();
     }
 
 

@@ -47,6 +47,7 @@ public class RobotContainer
     private final ElevatorHookForward elevatorHookForward = new ElevatorHookForward(elevator);
     private final ElevatorHookReverse elevatorHookReverse = new ElevatorHookReverse(elevator);
     private final ElevatorLiftBot elevatorLiftBot = new ElevatorLiftBot(elevator);
+    private final ElevatorLiftBotReverse elevatorLiftBotReverse = new ElevatorLiftBotReverse(elevator);
     private final ElevatorStop stopElevator = new ElevatorStop(elevator);
 
     //Joystick definitions
@@ -64,7 +65,7 @@ public class RobotContainer
 
         //Add options the autonomous chooser
         autoChooser.addOption("Autonomous Drive", simpleAutonomousCommand);
-        autoChooser.addOption("[Incomplete] Autonomous Score", complexAutonomousCommand);
+        autoChooser.addOption("Autonomous Score", complexAutonomousCommand);
 
         // Put the chooser on the dashboard
         Shuffleboard.getTab("Autonomous").add(autoChooser);
@@ -98,6 +99,8 @@ public class RobotContainer
         JoystickButton m_5 = new JoystickButton(m_stick, 5);
         JoystickButton m_6 = new JoystickButton(m_stick, 6);
 
+        JoystickButton s_1 = new JoystickButton(s_stick, 1);
+        JoystickButton s_2 = new JoystickButton(s_stick, 2);
         JoystickButton s_3 = new JoystickButton(s_stick, 3);
         JoystickButton s_4 = new JoystickButton(s_stick, 4);
         JoystickButton s_5 = new JoystickButton(s_stick, 5);
@@ -106,13 +109,15 @@ public class RobotContainer
         //Binds buttons
         m_3.whileHeld(shoot);
         m_3.whenReleased(stopShooter);
-        m_4.whileHeld(elevatorLiftBot);
-        m_4.whenReleased(stopElevator);
         m_5.whenPressed(spinFoward);
         m_6.whenPressed(spinBack);
         m_5.whenReleased(spinStop);
         m_6.whenReleased(spinStop);
 
+        s_1.whileHeld(elevatorLiftBot);
+        s_1.whenReleased(stopElevator);
+        s_2.whileHeld(elevatorLiftBotReverse);
+        s_2.whenReleased(stopElevator);
         s_3.whileHeld(elevatorDown);
         s_4.whileHeld(elevatorUp);
         s_5.whileHeld(elevatorHookForward);

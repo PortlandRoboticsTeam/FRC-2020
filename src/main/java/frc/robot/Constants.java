@@ -21,16 +21,16 @@ public final class Constants
     public static final int teamNumber = 7195;
 
     //CAN port numberings
-    public static final int wheel1PortNum = 5;  //front right
-    public static final int wheel2PortNum = 6;  //rear right
-    public static final int wheel3PortNum = 1;  //front left
-    public static final int wheel4PortNum = 2;  //rear left
-    public static final int wheel5PortNum = 3;  //center one
-    public static final int wheel6PortNum = 4;  //center two
+    public static final int wheel1PortNum = 3;  //front right
+    public static final int wheel2PortNum = 4;  //rear right
+    public static final int wheel3PortNum = 5;  //front left
+    public static final int wheel4PortNum = 6;  //rear left
+    public static final int wheel5PortNum = 1;  //center one
+    public static final int wheel6PortNum = 2;  //center two
 
-    public static final int elevatorLiftPortNum = 12;
+    public static final int elevatorLiftPortNum = 10;
     public static final int elevatorHookPortNum = 7;
-    public static final int elevatorDownPortNum = 10;
+    public static final int elevatorDownPortNum = 12;
     public static final int intakePortNum = 0;
     public static final int shooterBottomPortNum = 11;
     public static final int shooterTopPortNum = 8;
