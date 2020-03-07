@@ -71,7 +71,6 @@ public class RobotContainer
         Shuffleboard.getTab("Autonomous").add(autoChooser);
 
         //Set driving mode
-        
         drivetrain.setDefaultCommand(
                 new DriveSlide(drivetrain,
                         () -> m_stick.getY(),
@@ -95,7 +94,7 @@ public class RobotContainer
     private void configureButtonBindings() {
         //Names buttons
         JoystickButton m_3 = new JoystickButton(m_stick, 3);
-        JoystickButton m_4 = new JoystickButton(m_stick, 4);
+        //JoystickButton m_4 = new JoystickButton(m_stick, 4);
         JoystickButton m_5 = new JoystickButton(m_stick, 5);
         JoystickButton m_6 = new JoystickButton(m_stick, 6);
 
@@ -114,9 +113,9 @@ public class RobotContainer
         m_5.whenReleased(spinStop);
         m_6.whenReleased(spinStop);
 
-        s_1.whileHeld(elevatorLiftBot);
+        s_1.whileHeld(elevatorLiftBotReverse);
         s_1.whenReleased(stopElevator);
-        s_2.whileHeld(elevatorLiftBotReverse);
+        s_2.whileHeld(elevatorLiftBot);
         s_2.whenReleased(stopElevator);
         s_3.whileHeld(elevatorDown);
         s_4.whileHeld(elevatorUp);

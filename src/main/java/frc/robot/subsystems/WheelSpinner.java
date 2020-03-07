@@ -121,12 +121,12 @@ public class WheelSpinner extends SubsystemBase {
 
     //To make the encoder code simpler, try to run it forward most of the time
     public void spinForward() {
-        wheelMotor.set(0.8);
+        wheelMotor.set(1.0);
         //position += motorCounter.get();
     }
 
     public void spinBack() {
-        wheelMotor.set(-0.8);
+        wheelMotor.set(-1.0);
         //position -= motorCounter.get();
     }
 

@@ -19,11 +19,23 @@ public class Elevator extends SubsystemBase {
     }
 
     public void driveElevator(double forward, double side, double throttle, boolean trigger, double scale) {
+        /*
         double mod = ((-throttle+1)/2);
+        if(!trigger) {
         liftMotor.set(forward*mod*scale);
+        }
         if(trigger) {
             hookMotor.set(side*mod*scale);
+            windowMotor.set(side*mod*scale);
         }
+        */
+        if(!trigger) {
+            liftMotor.set(forward*scale);
+            }
+            if(trigger) {
+                hookMotor.set(side*scale);
+                windowMotor.set(side*scale);
+            }
     }
 
     public void elevatorUp() {

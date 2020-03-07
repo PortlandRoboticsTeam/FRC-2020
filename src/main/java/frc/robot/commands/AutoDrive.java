@@ -36,7 +36,7 @@ public class AutoDrive extends CommandBase {
 
     @Override
     public boolean isFinished() {
-        return (autoTimer.get() >= 5);
+        return (autoTimer.get() >= 3);
     }
 
     /**

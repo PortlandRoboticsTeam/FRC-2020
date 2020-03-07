@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Shooter;
 
@@ -33,10 +32,11 @@ public class AutoScoreSimple extends CommandBase {
      */
     @Override
     public void execute() {
-        new SequentialCommandGroup(new ShootOne(shooter, 0.8), new ShootOne(shooter, 0.8), new ShootOne(shooter, 0.8));
-        //new Shoot(shooter, 0.8)
+        while (autoTimer.get() <= 5) {
+            shooter.shoot(1.0);
+        }
         while (autoTimer.get() >= 10) {
-            drivetrain.tankDrive(-0.55, -0.5, 1);
+            drivetrain.tankDrive(-0.5, -0.5, 1);
         }
     }
 
